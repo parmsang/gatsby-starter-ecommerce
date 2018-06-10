@@ -1,9 +1,44 @@
-# gatsby-starter-ecommerce
-Gatsby starter for creating an ecommerce site using Moltin API.
+# Gatsby Starter eCommerce
+
+Gatsby starter for creating an eCommerce site using [Moltin eCommerce Api ](https://moltin.com/).
+
+This starter adapts an [existing](https://github.com/moltin-examples/nextjs-demo-store) NextJS eCommerce starter for [GatsbyJS](https://www.gatsbyjs.org/).
+
+Demo: <https://github.com/parmsang/gatsby-starter-ecommerce>
+
+
+## Warning
+
+This starter is currently work in progress
+
+## Getting started
 
 Install this starter (assuming Gatsby is installed) by running from your CLI:
 
 `gatsby new gatsby-store https://github.com/parmsang/gatsby-starter-ecommerce`
 
-## Running in development
+### Running in development
+
 `gatsby develop`
+
+### Additional Setup
+
+Both a moltin and Stripe account are needed for this store to run successfully.
+
+Create a `.env` file at the project root with your moltin `client_id` and Stripe test `publishable key`.
+
+```dosini
+MOLTIN_CLIENT_ID=
+STRIPE_PUBLISHABLE_KEY=
+```
+
+## Features
+
+- Moltin eCommerce API
+- React 16
+- Eslint & Prettier
+- Styled Components
+- Google Analytics - (you enter the tracking-id)
+- Semantic-UI
+- Authentication via Moltin (Login and Register)
+- Stripe checkout
