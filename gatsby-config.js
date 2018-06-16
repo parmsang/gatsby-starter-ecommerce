@@ -3,7 +3,7 @@ module.exports = {
     title: 'Gatsby starter ecommerce',
     author: 'Parminder Sanghera',
     description: 'A starter e-commerce site made using Gatsby.',
-    siteUrl: 'tbc',
+    siteUrl: 'https://parmsang.github.io/gatsby-starter-ecommerce/',
   },
   pathPrefix: '/gatsby-starter-ecommerce',
   plugins: [

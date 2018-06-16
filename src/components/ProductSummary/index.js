@@ -7,7 +7,7 @@ import AddToCart from '../AddToCart'
 
 export default ({ id, name, meta, sku, mainImage }) => (
   <Item.Group>
-    <Item>
+    <Item style={{ alignItems: 'center' }}>
       <Item.Image size="medium">
         <Img
           style={{ width: '250px' }}
