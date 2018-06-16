@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/gatsby-starter-ecommerce/app-4ddfa63f1c316a88c89f.js","a598074a758314a7054e854c07aff11f"],["/gatsby-starter-ecommerce/commons-2d6d7fc5f9bcfcc093ac.js","675c5dadcdfe40068ce1621af3b86ef1"],["/gatsby-starter-ecommerce/index.html","13ff0c93cf74fe2f6d0a0a617173c5fd"],["/gatsby-starter-ecommerce/offline-plugin-app-shell-fallback/index.html","91b7d39a8f5280047e41baa66cd734cb"]];
+var precacheConfig = [["/gatsby-starter-ecommerce/app-c59676464f9ca4bc2ae4.js","bb8f27ef13d3bbd7c7637cdee04adf2e"],["/gatsby-starter-ecommerce/commons-ee0f91d85681a3b469d0.js","e9dc608c90899e8dc605c7103874e9a4"],["/gatsby-starter-ecommerce/index.html","4ada0982cadf8633b9ce42d3cc36f164"],["/gatsby-starter-ecommerce/offline-plugin-app-shell-fallback/index.html","f66881370f0ee23aa0cb2b1d31c1ae85"]];
 var cacheName = 'sw-precache-v3-gatsby-plugin-offline-' + (self.registration ? self.registration.scope : '');
 
 
