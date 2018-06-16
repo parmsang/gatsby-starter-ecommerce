@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Link, { withPrefix } from 'gatsby-link'
+import Link from 'gatsby-link'
 import { Menu, Container, Icon, Image } from 'semantic-ui-react'
 import logo from '../../images/moltin-light-hex.svg.svg'
 
@@ -9,8 +9,14 @@ class DesktopMenu extends Component {
   componentWillReceiveProps(nextProps) {
     const nextPathname = nextProps.location.pathname
     const currentPathname = this.props.location.pathname
+
     if (nextPathname !== currentPathname) {
-      this.setState({ activeItem: withPrefix(nextPathname) })
+      this.setState({
+        activeItem: `/${nextPathname
+          .split('/')
+          .pop()
+          .toString()}`,
+      })
     }
   }
 
