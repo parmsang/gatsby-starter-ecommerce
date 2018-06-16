@@ -11,16 +11,18 @@ class StoreIndex extends React.Component {
   render() {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const products = get(this, 'props.data.allMoltinProduct.edges')
-
+    const filterProductsWithoutImages = products.filter(
+      v => v.node.includedData.main_image
+    )
     return (
       <div>
         <Helmet title={siteTitle} />
         <Header as="h3" icon textAlign="center" style={{ marginBottom: '2em' }}>
           <Header.Content style={{ width: '60%', margin: '0 auto' }}>
-            <Image src={logo} />
+            <Image src={logo} alt={'logo'}/>
           </Header.Content>
         </Header>
-        <ProductList products={products} />
+        <ProductList products={filterProductsWithoutImages} />
       </div>
     )
   }
@@ -55,6 +57,13 @@ export const pageQuery = graphql`
               id
               link {
                 href
+              }
+            }
+          }
+          mainImage {
+            childImageSharp {
+              sizes(maxWidth: 400) {
+                ...GatsbyImageSharpSizes
               }
             }
           }

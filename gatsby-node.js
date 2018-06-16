@@ -1,5 +1,8 @@
 const Promise = require('bluebird')
 const path = require('path')
+const get = require('lodash/get')
+
+const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
@@ -37,6 +40,23 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       })
     )
   })
+}
+
+exports.onCreateNode = async ({ node, boundActionCreators, cache, store }) => {
+  const { createNode } = boundActionCreators
+  let fileNode
+
+  if (node.internal.type === `MoltinProduct`) {
+    const mainImageHref = get(node, 'includedData.main_image.link.href')
+
+    fileNode = await createRemoteFileNode({
+      url: mainImageHref,
+      store,
+      cache,
+      createNode,
+    })
+    if (fileNode && fileNode.id) node.mainImage___NODE = fileNode.id
+  }
 }
 
 exports.modifyWebpackConfig = ({ config }) => {

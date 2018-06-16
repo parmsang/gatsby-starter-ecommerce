@@ -10,14 +10,19 @@ class ProductPageTemplate extends React.PureComponent {
     const productInfo = get(this, 'props.data.allMoltinProduct')
     const data = productInfo.edges[0].node
     const slug = data.slug
+    const image = get(data, 'includedData.main_image.link.href')
+    const sizes = get(data, 'mainImage.childImageSharp.sizes')
     const product = {
       ...data,
       id: data.originalId,
-      image: data.includedData.main_image.link.href,
+      image,
+      mainImage: data.mainImage,
       header: data.name,
       meta: data.meta,
       sku: data.sku,
     }
+
+    if(!sizes) return null
 
     return (
       <div>
@@ -52,6 +57,13 @@ export const pageQuery = graphql`
             main_image {
               link {
                 href
+              }
+            }
+          }
+          mainImage {
+            childImageSharp {
+              sizes(maxWidth: 400) {
+                ...GatsbyImageSharpSizes
               }
             }
           }

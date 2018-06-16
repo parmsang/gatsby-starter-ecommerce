@@ -22,7 +22,12 @@ class DesktopMenu extends Component {
       <Menu size="huge" borderless pointing>
         <Container text>
           <Menu.Item active={activeItem === '/'} as={Link} to="/" header>
-            <Image size="mini" src={logo} style={{ marginRight: '1.5em' }} />
+            <Image
+              size="mini"
+              src={logo}
+              style={{ marginRight: '1.5em' }}
+              alt="I love Lamp"
+            />
             Starter Store
           </Menu.Item>
 

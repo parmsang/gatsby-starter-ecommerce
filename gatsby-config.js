@@ -10,7 +10,9 @@ module.exports = {
     {
       resolve: 'gatsby-source-moltin',
       options: {
-        key: 'j6hSilXRQfxKohTndUuVrErLcSJWP15P347L6Im0M4',
+        key:
+          process.env.MOLTIN_CLIENT_ID ||
+          'j6hSilXRQfxKohTndUuVrErLcSJWP15P347L6Im0M4',
         products: ['main_image', 'brands', 'files', 'categories'],
       },
     },

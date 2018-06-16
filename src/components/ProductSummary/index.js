@@ -1,14 +1,20 @@
 import React from 'react'
+import Img from 'gatsby-image'
 
 import { Item, Label } from 'semantic-ui-react'
 
 import AddToCart from '../AddToCart'
 
-export default ({ id, image, name, meta, sku }) => (
+export default ({ id, name, meta, sku, mainImage }) => (
   <Item.Group>
     <Item>
-      <Item.Image size="medium" src={image} />
-
+      <Item.Image size="medium">
+        <Img
+          style={{ width: '250px' }}
+          sizes={mainImage.childImageSharp.sizes}
+          alt={name}
+        />
+      </Item.Image>
       <Item.Content>
         <Item.Header>{name}</Item.Header>
         <Item.Description>
