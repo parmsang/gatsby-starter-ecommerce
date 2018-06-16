@@ -62,7 +62,7 @@ export const pageQuery = graphql`
           }
           mainImage {
             childImageSharp {
-              sizes(maxWidth: 400) {
+              sizes(maxWidth: 600) {
                 ...GatsbyImageSharpSizes
               }
             }
