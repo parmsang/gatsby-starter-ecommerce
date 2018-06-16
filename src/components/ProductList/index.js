@@ -4,7 +4,10 @@ import Link from 'gatsby-link'
 
 const mapProductsToItems = products =>
   products.map(({ node: { name, originalId, meta, includedData } }) => {
-    const image = includedData.main_image.link.href
+    const image = includedData.main_image
+      ? includedData.main_image.link.href
+      : ''
+
     const price = meta.display_price.with_tax.formatted || null
     return {
       as: Link,
