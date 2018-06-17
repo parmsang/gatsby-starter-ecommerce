@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container } from 'semantic-ui-react'
 import Headroom from 'react-headroom'
+import Helmet from 'react-helmet'
 import 'semantic-ui-css/semantic.min.css'
 import AuthContext from '../Auth/AuthContext'
 import Header from '../components/Header'
@@ -43,6 +44,9 @@ class Layout extends React.PureComponent {
         }}
       >
         <React.Fragment>
+          <Helmet>
+            <html lang="en" />
+          </Helmet>
           <Headroom>
             <Header location={location} token={this.state.token} />
           </Headroom>

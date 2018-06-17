@@ -23,6 +23,15 @@ const StyledLink = styled(Link)`
   }
 `
 
+const StyledNavButton = styled(Button)`
+  &:focus {
+    outline: -webkit-focus-ring-color auto 5px;
+    outline-color: -webkit-focus-ring-color;
+    outline-style: auto;
+    outline-width: 5px;
+  }
+`
+
 class MobileMenu extends Component {
   state = { open: false }
 
@@ -38,14 +47,27 @@ class MobileMenu extends Component {
       <Menu size="huge" borderless>
         <Container text>
           <Menu.Item as={Link} to="/" header>
-            <Image size="mini" src={logo} style={{ marginRight: '1.5em' }} />
+            <Image
+              size="mini"
+              src={logo}
+              style={{ marginRight: '1.5em' }}
+              alt="I love Lamp"
+            />
             Starter Store
           </Menu.Item>
-          <Menu.Item position="right" onClick={this.handleClick}>
-            <Icon name="bars" />
+          <Menu.Item position="right">
+            <StyledNavButton
+              basic
+              onClick={this.handleClick}
+              aria-label="Open Navigation Menu"
+            >
+              <Icon fitted name="bars" />
+            </StyledNavButton>
           </Menu.Item>
-          <Portal onClose={this.handleClose} open={open}>
+          <Portal closeOnEscape onClose={this.handleClose} open={open}>
             <Segment
+              role="dialog"
+              aria-label="Navigation Menu"
               style={{
                 position: 'fixed',
                 top: '0%',
@@ -63,16 +85,18 @@ class MobileMenu extends Component {
                 }}
               >
                 <Button
+                  aria-label="Close Navigation"
                   circular
                   icon="x"
                   size="large"
+                  basic
                   style={{
                     position: 'absolute',
                     top: '-5em',
                     right: '0',
-                    background: '#fff',
                   }}
                   onClick={this.handleClose}
+                  autoFocus
                 />
                 <StyledLink to="/" onClick={this.handleClose}>
                   <Icon name="home" style={{ marginRight: '0.5em' }} />
