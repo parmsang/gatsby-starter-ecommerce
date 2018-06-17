@@ -9,7 +9,10 @@ class Header extends React.PureComponent {
       <Grid>
         <Grid.Row columns={1} only="mobile">
           <Grid.Column>
-            <MobileMenu token={this.props.token} />
+            <MobileMenu
+              location={this.props.location}
+              token={this.props.token}
+            />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row columns={1} only="tablet computer">

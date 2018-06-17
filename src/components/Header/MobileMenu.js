@@ -33,20 +33,34 @@ const StyledNavButton = styled(Button)`
 `
 
 class MobileMenu extends Component {
-  state = { open: false }
+  state = { open: false, activeItem: '/' }
+
+  componentWillReceiveProps(nextProps) {
+    const nextPathname = nextProps.location.pathname
+    const currentPathname = this.props.location.pathname
+
+    if (nextPathname !== currentPathname) {
+      this.setState({
+        activeItem: `/${nextPathname
+          .split('/')
+          .pop()
+          .toString()}`,
+      })
+    }
+  }
 
   handleClick = () => this.setState({ open: !this.state.open })
 
   handleClose = () => this.setState({ open: false })
 
   render() {
-    const { open } = this.state
+    const { open, activeItem } = this.state
     const { token } = this.props
 
     return (
-      <Menu size="huge" borderless>
+      <Menu size="huge" borderless pointing>
         <Container text>
-          <Menu.Item as={Link} to="/" header>
+          <Menu.Item as={Link} to="/" header active={activeItem === '/'}>
             <Image
               size="mini"
               src={logo}
@@ -55,15 +69,21 @@ class MobileMenu extends Component {
             />
             Starter Store
           </Menu.Item>
-          <Menu.Item position="right">
-            <StyledNavButton
-              basic
-              onClick={this.handleClick}
-              aria-label="Open Navigation Menu"
-            >
-              <Icon fitted name="bars" />
-            </StyledNavButton>
-          </Menu.Item>
+          <Menu.Menu position="right">
+            <Menu.Item as={Link} to="/cart" active={activeItem === '/cart'}>
+              <Icon name="cart" />
+              Cart
+            </Menu.Item>
+            <Menu.Item position="right">
+              <StyledNavButton
+                basic
+                onClick={this.handleClick}
+                aria-label="Open Navigation Menu"
+              >
+                <Icon fitted name="bars" />
+              </StyledNavButton>
+            </Menu.Item>
+          </Menu.Menu>
           <Portal closeOnEscape onClose={this.handleClose} open={open}>
             <Segment
               role="dialog"
