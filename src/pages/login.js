@@ -78,7 +78,9 @@ export default class Login extends React.Component {
                     fluid
                     name="email"
                     type="email"
+                    autoFocus
                     onChange={e => this._handleChange(e)}
+                    required
                   />
                 </Form.Field>
 
@@ -89,6 +91,7 @@ export default class Login extends React.Component {
                     fluid
                     name="password"
                     type="password"
+                    required
                     onChange={e => this._handleChange(e)}
                   />
                 </Form.Field>

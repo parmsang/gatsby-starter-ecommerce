@@ -62,6 +62,7 @@ export default class Register extends React.Component {
                     fluid
                     name="name"
                     autoFocus
+                    required
                     onChange={e => this._handleChange(e)}
                   />
                 </Form.Field>
@@ -73,6 +74,7 @@ export default class Register extends React.Component {
                     fluid
                     name="email"
                     type="email"
+                    required
                     onChange={e => this._handleChange(e)}
                   />
                 </Form.Field>
@@ -84,6 +86,7 @@ export default class Register extends React.Component {
                     fluid
                     name="password"
                     type="password"
+                    required
                     onChange={e => this._handleChange(e)}
                   />
                 </Form.Field>
