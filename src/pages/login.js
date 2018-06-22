@@ -41,13 +41,28 @@ export default class Login extends React.Component {
         console.log(e.message)
         this.setState({
           loading: false,
-          errors: e,
+          errors: e.errors || e,
         })
       })
   }
 
   _handleChange = ({ target: { name, value } }) =>
     this.setState({ [name]: value })
+
+  handleErrors = errors => {
+    if (!Array.isArray(errors) && !errors.length > 0) {
+      return (
+        <Message
+          error
+          header="Sorry"
+          content="Please check your login details and try again."
+        />
+      )
+    }
+    return errors.map((error, i) => (
+      <Message error header={error.title} content={error.detail} key={i} />
+    ))
+  }
 
   render() {
     const { loading, errors } = this.state
@@ -64,12 +79,7 @@ export default class Login extends React.Component {
               loading={loading}
               error={!!errors}
             >
-              <Message
-                error
-                header="Sorry"
-                content="Please check your login details and try again."
-              />
-
+              {errors ? this.handleErrors(errors) : null}
               <Segment>
                 <Form.Field>
                   <label htmlFor="email">Email</label>
