@@ -29,12 +29,20 @@ export default ({ items, removeFromCart, loading, completed }) => {
       return {
         childKey: id,
         header: (
-          <Link to={`/product/${product_id}`}>
-            <Item.Header>{name}</Item.Header>
-          </Link>
+          <Item.Header>
+            <Link to={`/product/${product_id}`}>{name}</Link>
+          </Item.Header>
         ),
-        image: imageUrl,
+        image: (
+          <Item.Image
+            src={imageUrl}
+            alt={name}
+            size="small"
+            style={{ background: '#f2f2f2' }}
+          />
+        ),
         meta: `${quantity}x ${price}`,
+        description: 'Some more information goes here....',
         extra: (
           <Button
             basic
