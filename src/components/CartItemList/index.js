@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import { Item, Button, Loader, Message } from 'semantic-ui-react'
+import { Item, Button, Loader, Message, Responsive } from 'semantic-ui-react'
+import styled from 'styled-components'
 
 export default ({ items, removeFromCart, loading, completed }) => {
   if (loading) return <Loader active inline="centered" />
@@ -26,6 +27,22 @@ export default ({ items, removeFromCart, loading, completed }) => {
     items.map(({ id, product_id, name, quantity, meta, image }) => {
       const price = meta.display_price.with_tax.unit.formatted || ''
       const imageUrl = image.href || '/static/moltin-light-hex.svg'
+      const ItemImage = () => (
+        <Item.Image
+          src={imageUrl}
+          alt={name}
+          size="small"
+          style={{ background: '#f2f2f2' }}
+        />
+      )
+      const ImageWithoutBackground = () => (
+        <Item.Image
+          src={imageUrl}
+          alt={name}
+          size="small"
+          style={{ background: 'none' }}
+        />
+      )
       return {
         childKey: id,
         header: (
@@ -34,12 +51,16 @@ export default ({ items, removeFromCart, loading, completed }) => {
           </Item.Header>
         ),
         image: (
-          <Item.Image
-            src={imageUrl}
-            alt={name}
-            size="small"
-            style={{ background: '#f2f2f2' }}
-          />
+          <React.Fragment>
+            <Responsive
+              as={ImageWithoutBackground}
+              {...Responsive.onlyMobile}
+            />
+            <Responsive
+              as={ItemImage}
+              minWidth={Responsive.onlyTablet.minWidth}
+            />
+          </React.Fragment>
         ),
         meta: `${quantity}x ${price}`,
         description: 'Some more information goes here....',

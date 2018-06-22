@@ -23,14 +23,32 @@ const StyledLink = styled(Link)`
   }
 `
 
-const StyledNavButton = styled(Button)`
-  &:focus {
-    outline: -webkit-focus-ring-color auto 5px;
-    outline-color: -webkit-focus-ring-color;
-    outline-style: auto;
-    outline-width: 5px;
+const BurgerButton = styled(Button)`
+  &&& {
+    font-size: 1rem;
+    padding: 0.785em 1.5em;
+    box-shadow: 0 0 0 1px transparent inset,
+      0 0 0 0 rgba(34, 36, 38, 0.15) inset;
   }
 `
+const CloseButton = BurgerButton.extend`
+  &&& {
+    position: absolute;
+    top: -3em;
+    right: 0.3em;
+    padding: 0.5em;
+    font-size: 2em;
+    &:hover,
+    :focus,
+    :active {
+      background: none !important;
+      box-shadow: 0 0 0 1px transparent inset,
+        0 0 0 0 rgba(34, 36, 38, 0.15) inset;
+      color: black;
+    }
+  }
+`
+
 const StyledSegment = styled(Segment)`
   &&& {
     position: fixed;
@@ -93,31 +111,28 @@ class MobileMenu extends Component {
               <ShoppingCartIcon cartCount={cartCount} name="Cart" />{' '}
             </Menu.Item>
             <Menu.Item position="right">
-              <StyledNavButton
+              <BurgerButton
                 basic
                 onClick={this.handleClick}
                 aria-label="Open Navigation Menu"
+                autoFocus
               >
                 <Icon fitted name="bars" />
-              </StyledNavButton>
+              </BurgerButton>
             </Menu.Item>
           </Menu.Menu>
           <Portal closeOnEscape onClose={this.handleClose} open={open}>
             <StyledSegment className role="dialog" aria-label="Navigation Menu">
               <StyledContainer>
-                <Button
+                <CloseButton
                   aria-label="Close Navigation"
-                  circular
-                  icon="x"
                   basic
-                  style={{
-                    position: 'absolute',
-                    top: '-5em',
-                    right: '0',
-                  }}
+                  circular
                   onClick={this.handleClose}
                   autoFocus
-                />
+                >
+                  X
+                </CloseButton>
                 <StyledLink to="/" onClick={this.handleClose}>
                   Home
                 </StyledLink>

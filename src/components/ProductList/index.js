@@ -10,7 +10,13 @@ const mapProductsToItems = products =>
       as: Link,
       to: `/product/${originalId}`,
       childKey: originalId,
-      image: <Img sizes={mainImage.childImageSharp.sizes} alt={name} />,
+      image: (
+        <Img
+          sizes={mainImage.childImageSharp.sizes}
+          alt={name}
+          style={{ background: '#fafafa' }}
+        />
+      ),
       header: name,
       meta: price,
     }
