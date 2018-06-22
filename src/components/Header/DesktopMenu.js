@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Link from 'gatsby-link'
-import { Menu, Container, Icon, Image } from 'semantic-ui-react'
-import logo from '../../images/moltin-light-hex.svg.svg'
+import { Menu, Container, Icon } from 'semantic-ui-react'
+import ShoppingCartIcon from './ShoppingCartIcon'
+import Logo from './Logo'
 
 class DesktopMenu extends Component {
   state = { activeItem: '/' }
@@ -28,15 +29,9 @@ class DesktopMenu extends Component {
       <Menu size="huge" borderless pointing>
         <Container text>
           <Menu.Item active={activeItem === '/'} as={Link} to="/" header>
-            <Image
-              size="mini"
-              src={logo}
-              style={{ marginRight: '1.5em' }}
-              alt="I love Lamp"
-            />
+            <Logo />
             Starter Store
           </Menu.Item>
-
           {token ? (
             <Menu.Menu position="right">
               <Menu.Item
@@ -48,8 +43,7 @@ class DesktopMenu extends Component {
                 My Account
               </Menu.Item>
               <Menu.Item as={Link} to="/cart" active={activeItem === '/cart'}>
-                <Icon name="cart" />
-                Cart
+                <ShoppingCartIcon name="Cart" />
               </Menu.Item>
             </Menu.Menu>
           ) : (
@@ -65,8 +59,7 @@ class DesktopMenu extends Component {
                 Sign in
               </Menu.Item>
               <Menu.Item as={Link} to="/cart" active={activeItem === '/cart'}>
-                <Icon name="cart" />
-                Cart
+                <ShoppingCartIcon name="Cart" />
               </Menu.Item>
             </Menu.Menu>
           )}

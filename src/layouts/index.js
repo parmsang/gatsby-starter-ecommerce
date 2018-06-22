@@ -17,10 +17,6 @@ class Layout extends React.PureComponent {
       )
       localStorage.setItem('mcart', cartId)
     }
-
-    this.setState({
-      cartId,
-    })
   }
 
   render() {

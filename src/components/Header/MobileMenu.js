@@ -3,7 +3,6 @@ import Link from 'gatsby-link'
 import {
   Menu,
   Container,
-  Image,
   Icon,
   Portal,
   Segment,
@@ -11,7 +10,8 @@ import {
   Button,
 } from 'semantic-ui-react'
 import styled from 'styled-components'
-import logo from '../../images/moltin-light-hex.svg.svg'
+import ShoppingCartIcon from './ShoppingCartIcon'
+import Logo from './Logo'
 
 const StyledLink = styled(Link)`
   color: black;
@@ -29,6 +29,30 @@ const StyledNavButton = styled(Button)`
     outline-color: -webkit-focus-ring-color;
     outline-style: auto;
     outline-width: 5px;
+  }
+`
+const StyledSegment = styled(Segment)`
+  &&& {
+    position: fixed;
+    top: 0%;
+    left: 0vw;
+    z-index: 1000;
+    width: 100vw;
+    height: 110vh;
+  }
+`
+
+const StyledContainer = styled.div`
+  &&& {
+    margin-top: 6em;
+    text-align: center;
+    position: relative;
+  }
+`
+
+const StyledDivider = styled(Divider)`
+  &&& {
+    margin: 2em;
   }
 `
 
@@ -55,24 +79,18 @@ class MobileMenu extends Component {
 
   render() {
     const { open, activeItem } = this.state
-    const { token } = this.props
+    const { token, cartCount } = this.props
 
     return (
       <Menu size="huge" borderless pointing>
         <Container text>
           <Menu.Item as={Link} to="/" header active={activeItem === '/'}>
-            <Image
-              size="mini"
-              src={logo}
-              style={{ marginRight: '1.5em' }}
-              alt="I love Lamp"
-            />
+            <Logo />
             Starter Store
           </Menu.Item>
           <Menu.Menu position="right">
             <Menu.Item as={Link} to="/cart" active={activeItem === '/cart'}>
-              <Icon name="cart" />
-              Cart
+              <ShoppingCartIcon cartCount={cartCount} name="Cart" />{' '}
             </Menu.Item>
             <Menu.Item position="right">
               <StyledNavButton
@@ -85,30 +103,12 @@ class MobileMenu extends Component {
             </Menu.Item>
           </Menu.Menu>
           <Portal closeOnEscape onClose={this.handleClose} open={open}>
-            <Segment
-              role="dialog"
-              aria-label="Navigation Menu"
-              style={{
-                position: 'fixed',
-                top: '0%',
-                left: '0vw',
-                zIndex: 1000,
-                width: '100vw',
-                height: '110vh',
-              }}
-            >
-              <div
-                style={{
-                  marginTop: '6em',
-                  textAlign: 'center',
-                  position: 'relative',
-                }}
-              >
+            <StyledSegment className role="dialog" aria-label="Navigation Menu">
+              <StyledContainer>
                 <Button
                   aria-label="Close Navigation"
                   circular
                   icon="x"
-                  size="large"
                   basic
                   style={{
                     position: 'absolute',
@@ -119,18 +119,15 @@ class MobileMenu extends Component {
                   autoFocus
                 />
                 <StyledLink to="/" onClick={this.handleClose}>
-                  <Icon name="home" style={{ marginRight: '0.5em' }} />
                   Home
                 </StyledLink>
-                <Divider />
+                <StyledDivider />
                 <StyledLink to="/cart" onClick={this.handleClose}>
-                  <Icon name="cart" style={{ marginRight: '0.5em' }} />
                   Shopping Cart
                 </StyledLink>
-                <Divider />
+                <StyledDivider />
                 {token ? (
                   <StyledLink to="/myaccount" onClick={this.handleClose}>
-                    <Icon name="user" style={{ marginRight: '0.5em' }} />
                     My Account
                   </StyledLink>
                 ) : (
@@ -140,18 +137,16 @@ class MobileMenu extends Component {
                       onClick={this.handleClose}
                       key={1}
                     >
-                      <Icon name="signup" style={{ marginRight: '0.5em' }} />
                       Sign Up
                     </StyledLink>,
-                    <Divider key={2} />,
+                    <StyledDivider key={2} />,
                     <StyledLink to="/login" onClick={this.handleClose} key={3}>
-                      <Icon name="sign in" style={{ marginRight: '0.5em' }} />
                       Sign In
                     </StyledLink>,
                   ]
                 )}
-              </div>
-            </Segment>
+              </StyledContainer>
+            </StyledSegment>
           </Portal>
         </Container>
       </Menu>
