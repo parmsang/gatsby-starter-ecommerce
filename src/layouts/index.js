@@ -3,18 +3,12 @@ import { Container } from 'semantic-ui-react'
 import Headroom from 'react-headroom'
 import Helmet from 'react-helmet'
 import 'semantic-ui-css/semantic.min.css'
-import AuthContext from '../Auth/AuthContext'
+import AuthProvider from '../components/Context/AuthProvider'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 class Layout extends React.PureComponent {
-  state = {
-    token: null,
-  }
-
   componentDidMount() {
-    const token = localStorage.getItem('customerToken')
-
     const cartId = localStorage.getItem('mcart')
 
     if (!cartId) {
@@ -25,7 +19,6 @@ class Layout extends React.PureComponent {
     }
 
     this.setState({
-      token,
       cartId,
     })
   }
@@ -34,28 +27,18 @@ class Layout extends React.PureComponent {
     const { location, children } = this.props
 
     return (
-      <AuthContext.Provider
-        value={{
-          state: this.state,
-          updateToken: () =>
-            this.setState({
-              token: localStorage.getItem('mcart'),
-            }),
-        }}
-      >
-        <React.Fragment>
-          <Helmet>
-            <html lang="en" />
-          </Helmet>
-          <Headroom>
-            <Header location={location} token={this.state.token} />
-          </Headroom>
-          <Container text style={{ paddingTop: '2em' }}>
-            {children()}
-          </Container>
-          <Footer />
-        </React.Fragment>
-      </AuthContext.Provider>
+      <AuthProvider>
+        <Helmet>
+          <html lang="en" />
+        </Helmet>
+        <Headroom>
+          <Header location={location} />
+        </Headroom>
+        <Container text style={{ paddingTop: '2em' }}>
+          {children()}
+        </Container>
+        <Footer />
+      </AuthProvider>
     )
   }
 }

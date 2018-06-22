@@ -10,7 +10,7 @@ import {
 } from 'semantic-ui-react'
 import Helmet from 'react-helmet'
 import { login } from '../../lib/moltin'
-import AuthContext from '../Auth/AuthContext'
+import AuthContext from '../components/Context/AuthContext'
 
 export default class Login extends React.Component {
   state = {

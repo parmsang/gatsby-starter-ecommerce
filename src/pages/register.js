@@ -2,7 +2,7 @@ import React from 'react'
 import { navigateTo } from 'gatsby-link'
 import { Header, Form, Input, Button, Segment } from 'semantic-ui-react'
 import Helmet from 'react-helmet'
-import AuthContext from '../Auth/AuthContext'
+import AuthContext from '../components/Context/AuthContext'
 import { register } from '../../lib/moltin'
 
 export default class Register extends React.Component {
