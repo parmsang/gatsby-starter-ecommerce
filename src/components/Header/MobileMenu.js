@@ -34,18 +34,12 @@ const BurgerButton = styled(Button)`
 const CloseButton = BurgerButton.extend`
   &&& {
     position: absolute;
-    top: -3em;
-    right: 0.3em;
+    top: -4em;
+    right: 0em;
     padding: 0.5em;
-    font-size: 2em;
-    &:hover,
-    :focus,
-    :active {
-      background: none !important;
-      box-shadow: 0 0 0 1px transparent inset,
-        0 0 0 0 rgba(34, 36, 38, 0.15) inset;
-      color: black;
-    }
+    font-size: 1.5em;
+    width: 2em;
+    height: 2em;
   }
 `
 

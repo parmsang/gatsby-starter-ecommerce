@@ -27,7 +27,7 @@ class Layout extends React.PureComponent {
         <Helmet>
           <html lang="en" />
         </Helmet>
-        <Headroom>
+        <Headroom upTolerance={10} downTolerance={10} style={{ zIndex: '20' }}>
           <Header location={location} />
         </Headroom>
         <Container text style={{ paddingTop: '2em' }}>

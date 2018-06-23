@@ -43,6 +43,8 @@ export const pageQuery = graphql`
           originalId
           name
           description
+          background_colour
+          new
           meta {
             display_price {
               with_tax {
