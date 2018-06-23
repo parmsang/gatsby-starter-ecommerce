@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Segment, Responsive } from 'semantic-ui-react'
 import DesktopMenu from './DesktopMenu'
 import MobileMenu from './MobileMenu'
 import AuthContext from '../Context/AuthContext'
@@ -9,21 +9,14 @@ class Header extends React.PureComponent {
     return (
       <AuthContext.Consumer>
         {auth => (
-          <Grid>
-            <Grid.Row columns={1} only="mobile">
-              <Grid.Column>
-                <MobileMenu location={this.props.location} token={auth.token} />
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row columns={1} only="tablet computer">
-              <Grid.Column>
-                <DesktopMenu
-                  location={this.props.location}
-                  token={auth.token}
-                />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+          <React.Fragment>
+            <Responsive {...Responsive.onlyMobile}>
+              <MobileMenu location={this.props.location} token={auth.token} />
+            </Responsive>
+            <Responsive minWidth={Responsive.onlyTablet.minWidth}>
+              <DesktopMenu location={this.props.location} token={auth.token} />
+            </Responsive>
+          </React.Fragment>
         )}
       </AuthContext.Consumer>
     )
