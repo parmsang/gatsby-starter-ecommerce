@@ -6,6 +6,7 @@ import 'semantic-ui-css/semantic.min.css'
 import AuthProvider from '../components/Context/AuthProvider'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import favicon from './favicon.ico'
 
 class Layout extends React.PureComponent {
   componentDidMount() {
@@ -26,6 +27,11 @@ class Layout extends React.PureComponent {
       <AuthProvider>
         <Helmet>
           <html lang="en" />
+          <meta
+            name="description"
+            content="A starter eCommerce website made using GatsbyJS"
+          />
+          <link rel="shortcut icon" href={favicon} />
         </Helmet>
         <Headroom upTolerance={10} downTolerance={10} style={{ zIndex: '20' }}>
           <Header location={location} />
