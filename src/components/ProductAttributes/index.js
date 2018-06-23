@@ -16,7 +16,7 @@ export default ({
     <Divider />
 
     <Table celled>
-      <Table.Header>
+      <Table.Header style={{ background: '#f9fafb' }}>
         <Table.Row>
           <Table.HeaderCell colSpan="2">Attributes</Table.HeaderCell>
         </Table.Row>

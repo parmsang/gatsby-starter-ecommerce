@@ -23,7 +23,7 @@ class DesktopMenu extends Component {
 
   render() {
     const { activeItem } = this.state
-    const { token } = this.props
+    const { token, cartCount } = this.props
 
     return (
       <Menu size="huge" borderless pointing>
@@ -43,7 +43,7 @@ class DesktopMenu extends Component {
                 My Account
               </Menu.Item>
               <Menu.Item as={Link} to="/cart" active={activeItem === '/cart'}>
-                <ShoppingCartIcon name="Cart" />
+                <ShoppingCartIcon cartCount={cartCount} name="Cart" />
               </Menu.Item>
             </Menu.Menu>
           ) : (
@@ -59,7 +59,7 @@ class DesktopMenu extends Component {
                 Sign in
               </Menu.Item>
               <Menu.Item as={Link} to="/cart" active={activeItem === '/cart'}>
-                <ShoppingCartIcon name="Cart" />
+                <ShoppingCartIcon cartCount={cartCount} name="Cart" />
               </Menu.Item>
             </Menu.Menu>
           )}

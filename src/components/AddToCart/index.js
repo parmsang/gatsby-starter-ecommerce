@@ -1,5 +1,6 @@
 import React from 'react'
 import { Input, Icon, Transition } from 'semantic-ui-react'
+import CartContext from '../Context/CartContext'
 
 const Moltin = require('../../../lib/moltin')
 
@@ -11,7 +12,7 @@ export default class AddToCart extends React.Component {
     visible: false,
   }
 
-  _handleSubmit = () => {
+  _handleSubmit = (e, context) => {
     const { productId } = this.props
     const { quantity } = this.state
     const cartId = localStorage.getItem('mcart')
@@ -25,6 +26,8 @@ export default class AddToCart extends React.Component {
 
       Moltin.addToCart(cartId, productId, quantity)
         .then(() => {
+          context.addToCart(quantity, cartId)
+
           this.setState(
             {
               loading: false,
@@ -68,34 +71,38 @@ export default class AddToCart extends React.Component {
   render() {
     const { loading, quantity, visible, error } = this.state
     return (
-      <React.Fragment>
-        <Input
-          type="number"
-          placeholder="Quantity"
-          value={quantity}
-          min={1}
-          step={1}
-          error={!!error}
-          onChange={e => this._handleChange(e)}
-          action={{
-            color: 'orange',
-            content: 'Add to Cart',
-            icon: 'plus cart',
-            onClick: this._handleSubmit,
-            loading,
-            disabled: loading,
-          }}
-        />
-        {error && (
-          <div style={{ color: 'red', position: 'absolute' }}>{error}</div>
+      <CartContext.Consumer>
+        {context => (
+          <React.Fragment>
+            <Input
+              type="number"
+              placeholder="Quantity"
+              value={quantity}
+              min={1}
+              step={1}
+              error={!!error}
+              onChange={e => this._handleChange(e)}
+              action={{
+                color: 'orange',
+                content: 'Add to Cart',
+                icon: 'plus cart',
+                onClick: e => this._handleSubmit(e, context),
+                loading,
+                disabled: loading,
+              }}
+            />
+            {error && (
+              <div style={{ color: 'red', position: 'absolute' }}>{error}</div>
+            )}
+            <Transition duration={{ hide: 500, show: 500 }} visible={visible}>
+              <div style={{ color: 'green', position: 'absolute' }}>
+                <Icon name="check" />
+                Added to cart
+              </div>
+            </Transition>
+          </React.Fragment>
         )}
-        <Transition duration={{ hide: 500, show: 500 }} visible={visible}>
-          <div style={{ color: 'green', position: 'absolute' }}>
-            <Icon name="check" />
-            Added to cart
-          </div>
-        </Transition>
-      </React.Fragment>
+      </CartContext.Consumer>
     )
   }
 }

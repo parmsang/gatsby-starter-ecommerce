@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import CartItemList from '../components/CartItemList/'
 import CartSummary from '../components/CartSummary/'
+import CartContext from '../components/Context/CartContext'
 
 const Moltin = require('../../lib/moltin')
 
@@ -65,9 +66,11 @@ export default class Cart extends React.Component {
       })
   }
 
-  _handleRemoveFromCart = itemId => {
+  _handleRemoveFromCart = (itemId, context) => {
     const { cartId } = this.state
     Moltin.removeFromCart(itemId, cartId).then(({ data, meta }) => {
+      const total = data.reduce((a, c) => a + c.quantity, 0)
+      context.updateCartCount(total, cartId)
       this.setState({
         items: data,
         meta,
@@ -81,7 +84,14 @@ export default class Cart extends React.Component {
     return (
       <div>
         <Helmet title="Cart" />
-        <CartItemList {...rest} removeFromCart={this._handleRemoveFromCart} />
+        <CartContext.Consumer>
+          {context => (
+            <CartItemList
+              {...rest}
+              removeFromCart={item => this._handleRemoveFromCart(item, context)}
+            />
+          )}
+        </CartContext.Consumer>
         {!loading &&
           !rest.completed && (
             <CartSummary {...meta} handleCheckout={this._handleCheckout} />

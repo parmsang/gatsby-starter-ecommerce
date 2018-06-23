@@ -102,7 +102,7 @@ class MobileMenu extends Component {
           </Menu.Item>
           <Menu.Menu position="right">
             <Menu.Item as={Link} to="/cart" active={activeItem === '/cart'}>
-              <ShoppingCartIcon cartCount={cartCount} name="Cart" />{' '}
+              <ShoppingCartIcon cartCount={cartCount} name="Cart" />
             </Menu.Item>
             <Menu.Item position="right">
               <BurgerButton
@@ -132,7 +132,7 @@ class MobileMenu extends Component {
                 </StyledLink>
                 <StyledDivider />
                 <StyledLink to="/cart" onClick={this.handleClose}>
-                  Shopping Cart
+                  {`Shopping Cart ${cartCount ? `(${cartCount})` : ''}`}
                 </StyledLink>
                 <StyledDivider />
                 {token ? (
