@@ -5,16 +5,12 @@
       "component---src-pages-privacy-js-34c75336e39e96023c33.js.map"
     ],
     "component---src-pages-cart-js": [
-      "component---src-pages-cart-js-49dcc7e34e8b81688b5c.js",
-      "component---src-pages-cart-js-49dcc7e34e8b81688b5c.js.map"
+      "component---src-pages-cart-js-9429f29e7501c4a9dbc4.js",
+      "component---src-pages-cart-js-9429f29e7501c4a9dbc4.js.map"
     ],
     "path---product-61-abf-56-a-194-e-4-e-13-a-717-92-d-2-f-0-c-9-d-4-df": [
       "path---product-61-abf-56-a-194-e-4-e-13-a-717-92-d-2-f-0-c-9-d-4-df-5a81ce4930e42afb731b.js",
       "path---product-61-abf-56-a-194-e-4-e-13-a-717-92-d-2-f-0-c-9-d-4-df-5a81ce4930e42afb731b.js.map"
-    ],
-    "path---product-ed-2280-fe-ee-09-4-e-92-a-5-d-0-bc-5-b-5-c-9-edc-8-a": [
-      "path---product-ed-2280-fe-ee-09-4-e-92-a-5-d-0-bc-5-b-5-c-9-edc-8-a-76838d88555b0202ea42.js",
-      "path---product-ed-2280-fe-ee-09-4-e-92-a-5-d-0-bc-5-b-5-c-9-edc-8-a-76838d88555b0202ea42.js.map"
     ],
     "path---myaccount": [
       "path---myaccount-a0e39f21c11f6a62c5ab.js",
@@ -29,8 +25,8 @@
       "path---product-36-c-21093-8996-4-a-9-d-aacb-bf-061-f-0769-ed-29cff6d2b0ae4a52965e.js.map"
     ],
     "component---src-pages-index-js": [
-      "component---src-pages-index-js-15c12fcf89f527e7adbc.js",
-      "component---src-pages-index-js-15c12fcf89f527e7adbc.js.map"
+      "component---src-pages-index-js-6915e1f079432e7e7290.js",
+      "component---src-pages-index-js-6915e1f079432e7e7290.js.map"
     ],
     "path---": [
       "path----557518bd178906f8d58a.js",
@@ -52,13 +48,9 @@
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js",
       "component---node-modules-gatsby-plugin-offline-app-shell-js-5c4c5a0f7af9dc69d6d7.js.map"
     ],
-    "path---product-353-bae-23-1-fb-5-4-bed-bf-8-a-07-d-5-bd-01225-c": [
-      "path---product-353-bae-23-1-fb-5-4-bed-bf-8-a-07-d-5-bd-01225-c-5784a6ab3c5205eb386b.js",
-      "path---product-353-bae-23-1-fb-5-4-bed-bf-8-a-07-d-5-bd-01225-c-5784a6ab3c5205eb386b.js.map"
-    ],
     "component---src-layouts-index-js": [
-      "component---src-layouts-index-js-e1623de71b0ac06f765a.js",
-      "component---src-layouts-index-js-e1623de71b0ac06f765a.js.map"
+      "component---src-layouts-index-js-a0894ba365c8a7213f05.js",
+      "component---src-layouts-index-js-a0894ba365c8a7213f05.js.map"
     ],
     "path---product-9-eda-5-ba-0-4-f-4-a-4074-8547-ccb-05-d-1-b-5981": [
       "path---product-9-eda-5-ba-0-4-f-4-a-4074-8547-ccb-05-d-1-b-5981-3003f03d3399b7f7ec15.js",
@@ -72,13 +64,9 @@
       "path---gatsbyimage-01ecf010313042cb61c5.js",
       "path---gatsbyimage-01ecf010313042cb61c5.js.map"
     ],
-    "path---product-2015-b-11-a-196-a-48-d-8-a-431-1-a-7482-b-8-b-041": [
-      "path---product-2015-b-11-a-196-a-48-d-8-a-431-1-a-7482-b-8-b-041-d93d4dcb27dc335bbe1e.js",
-      "path---product-2015-b-11-a-196-a-48-d-8-a-431-1-a-7482-b-8-b-041-d93d4dcb27dc335bbe1e.js.map"
-    ],
     "path---index": [
-      "path---index-280049d56cfa1341602c.js",
-      "path---index-280049d56cfa1341602c.js.map"
+      "path---index-201cf3296e2265801491.js",
+      "path---index-201cf3296e2265801491.js.map"
     ],
     "path---product-001-b-9188-3959-4269-aaf-6-e-4-a-74-f-8607-b-8": [
       "path---product-001-b-9188-3959-4269-aaf-6-e-4-a-74-f-8607-b-8-2825354b25ef5244f6f4.js",
@@ -97,8 +85,8 @@
       "path---privacy-a0e39f21c11f6a62c5ab.js.map"
     ],
     "commons": [
-      "commons-34af1c4a5c600f1dd486.js",
-      "commons-34af1c4a5c600f1dd486.js.map"
+      "commons-6e7ec5adbf4de9029cec.js",
+      "commons-6e7ec5adbf4de9029cec.js.map"
     ],
     "path---404-html": [
       "path---404-html-a0e39f21c11f6a62c5ab.js",
@@ -113,17 +101,17 @@
       "path---offline-plugin-app-shell-fallback-a0e39f21c11f6a62c5ab.js.map"
     ],
     "component---src-pages-register-js": [
-      "component---src-pages-register-js-cc373ce9b01368197376.js",
-      "component---src-pages-register-js-cc373ce9b01368197376.js.map"
+      "component---src-pages-register-js-bc4c6a4281174ddfb136.js",
+      "component---src-pages-register-js-bc4c6a4281174ddfb136.js.map"
     ],
     "component---src-pages-login-js": [
-      "component---src-pages-login-js-8448246ca89af9a1705a.js",
-      "component---src-pages-login-js-8448246ca89af9a1705a.js.map"
+      "component---src-pages-login-js-4fb511bdac9809f32ed0.js",
+      "component---src-pages-login-js-4fb511bdac9809f32ed0.js.map"
     ],
     "app": [
-      "app-c59676464f9ca4bc2ae4.js",
+      "app-142fc6dcacb275f0f8a7.js",
       "build-js-styles.css",
-      "app-c59676464f9ca4bc2ae4.js.map",
+      "app-142fc6dcacb275f0f8a7.js.map",
       "build-js-styles.css.map"
     ],
     "path---product-41-c-84-c-63-4-d-5-e-4135-979-f-e-4-b-681-b-83-dcc": [
