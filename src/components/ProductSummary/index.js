@@ -19,7 +19,6 @@ export default ({ id, name, meta, sku, mainImage }) => (
         <Item.Header>{name}</Item.Header>
         <Item.Description>
           <p>{meta.display_price.with_tax.formatted}</p>
-
           <Label>SKU: {sku}</Label>
         </Item.Description>
         <Item.Extra>
