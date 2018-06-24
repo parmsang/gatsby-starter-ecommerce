@@ -36,12 +36,14 @@ export default ({ items, removeFromCart, loading, completed }) => {
           style={{ background: '#f2f2f2' }}
         />
       )
-
-      const MobileItemImage = styled(DesktopItemImage)`
-        &&& {
-          background: none;
-        }
-      `
+      const MobileItemImage = () => (
+        <Item.Image
+          src={imageUrl}
+          alt={name}
+          size="small"
+          style={{ background: 'none' }}
+        />
+      )
 
       return {
         childKey: id,

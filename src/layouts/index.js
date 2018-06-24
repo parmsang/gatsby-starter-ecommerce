@@ -49,13 +49,11 @@ class Layout extends React.PureComponent {
           <Headroom
             upTolerance={10}
             downTolerance={10}
-            style={{ zIndex: '20' }}
+            style={{ zIndex: '20', height: '6.5em' }}
           >
             <Header location={location} />
           </Headroom>
-          <Container text style={{ paddingTop: '2em' }}>
-            {children()}
-          </Container>
+          <Container text>{children()}</Container>
           <Footer />
         </CartProvider>
       </AuthProvider>

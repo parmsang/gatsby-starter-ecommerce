@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Link from 'gatsby-link'
+import Link, { withPrefix } from 'gatsby-link'
 import {
   Menu,
   Container,
@@ -68,7 +68,10 @@ const StyledDivider = styled(Divider)`
 `
 
 class MobileMenu extends Component {
-  state = { open: false, activeItem: '/' }
+  state = {
+    open: false,
+    activeItem: this.props.location.pathname,
+  }
 
   componentWillReceiveProps(nextProps) {
     const nextPathname = nextProps.location.pathname
@@ -76,10 +79,7 @@ class MobileMenu extends Component {
 
     if (nextPathname !== currentPathname) {
       this.setState({
-        activeItem: `/${nextPathname
-          .split('/')
-          .pop()
-          .toString()}`,
+        activeItem: nextPathname,
       })
     }
   }
@@ -95,12 +95,21 @@ class MobileMenu extends Component {
     return (
       <Menu size="huge" borderless pointing>
         <Container text>
-          <Menu.Item as={Link} to="/" header active={activeItem === '/'}>
+          <Menu.Item
+            as={Link}
+            to="/"
+            header
+            active={activeItem === withPrefix('/')}
+          >
             <Logo />
             Starter Store
           </Menu.Item>
           <Menu.Menu position="right">
-            <Menu.Item as={Link} to="/cart/" active={activeItem === '/cart'}>
+            <Menu.Item
+              as={Link}
+              to="/cart/"
+              active={activeItem === withPrefix('/cart/')}
+            >
               <ShoppingCartIcon cartCount={cartCount} name="Cart" />
             </Menu.Item>
             <Menu.Item position="right">
