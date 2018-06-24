@@ -35,7 +35,7 @@ export default class Login extends React.Component {
         localStorage.setItem('customerToken', token)
         localStorage.setItem('mcustomer', id)
         context.updateToken()
-        navigateTo('/myaccount')
+        navigateTo('/myaccount/')
       })
       .catch(e => {
         console.log(e.message)
@@ -82,7 +82,9 @@ export default class Login extends React.Component {
               {errors ? this.handleErrors(errors) : null}
               <Segment>
                 <Form.Field>
-                  <label htmlFor="email">Email</label>
+                  <label style={{ fontSize: '14px' }} htmlFor="email">
+                    Email
+                  </label>
                   <Input
                     id="email"
                     fluid
@@ -95,7 +97,9 @@ export default class Login extends React.Component {
                 </Form.Field>
 
                 <Form.Field>
-                  <label htmlFor="password">Password</label>
+                  <label style={{ fontSize: '14px' }} htmlFor="password">
+                    Password
+                  </label>
                   <Input
                     id="password"
                     fluid

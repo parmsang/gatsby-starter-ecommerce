@@ -18,7 +18,7 @@ const mapProductsToItems = products =>
       const price = meta.display_price.with_tax.formatted || null
       return {
         as: Link,
-        to: `/product/${originalId}`,
+        to: `/product/${originalId}/`,
         childKey: originalId,
         image: (
           <Image>

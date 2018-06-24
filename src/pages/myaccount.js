@@ -15,7 +15,7 @@ export default class MyAccount extends React.Component {
     const token = localStorage.getItem('customerToken')
 
     if (!token) {
-      navigateTo('/login')
+      navigateTo('/login/')
     }
     getOrders(token)
       .then(({ data, included, meta }) => {

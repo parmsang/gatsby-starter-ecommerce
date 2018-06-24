@@ -1,21 +1,41 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import {
-  Segment,
-  Container,
-  Grid,
-  List,
-  Header,
-  Menu,
-  Icon,
-} from 'semantic-ui-react'
+import { Segment, Container, Grid, List, Header } from 'semantic-ui-react'
+import styled from 'styled-components'
+
+const StyledLink = styled.a`
+  &&&&& {
+    color: #2a5886;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`
+
+const StyledListItem = styled(List.Item)`
+  &&&&& {
+    color: #2a5886;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`
+
+const StyledGatsbyLink = styled(Link)`
+  &&&&& {
+    color: #2a5886;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`
 
 const Footer = () => (
   <div>
     <Segment
       vertical
       style={{
-        padding: '5em 0em',
+        padding: '4em 0em',
         marginTop: '3em',
         borderTop: '1px solid #f2f2f2',
       }}
@@ -26,23 +46,23 @@ const Footer = () => (
             <Grid.Column width={4}>
               <Header as="h4" content="About" />
               <List>
-                <List.Item as={Link} to="/privacy">
+                <List.Item as={StyledGatsbyLink} to="/privacy/">
                   Privacy
                 </List.Item>
-                <List.Item as={Link} to="/terms">
+                <StyledListItem as={Link} to="/terms/">
                   Terms
-                </List.Item>
+                </StyledListItem>
               </List>
             </Grid.Column>
             <Grid.Column width={5}>
               <Header as="h4" content="Services" />
               <List>
-                <List.Item as={Link} to="/">
+                <StyledListItem as={Link} to="/">
                   Our Products
-                </List.Item>
-                <List.Item as={Link} to="/gatsbyimage">
+                </StyledListItem>
+                <StyledListItem as={Link} to="/gatsbyimage/">
                   Gatsby Image Example
-                </List.Item>
+                </StyledListItem>
               </List>
             </Grid.Column>
             <Grid.Column width={7}>
@@ -55,25 +75,31 @@ const Footer = () => (
                 <List.Item
                   icon="twitter"
                   content={
-                    <a href="https://twitter.com/parmsang" alt="twitter link">
+                    <StyledLink
+                      href="https://twitter.com/parmsang"
+                      alt="twitter link"
+                    >
                       Twitter
-                    </a>
+                    </StyledLink>
                   }
                 />
                 <List.Item
                   icon="facebook"
                   content={
-                    <a href="https://facebook.com/" alt="facebook link">
+                    <StyledLink
+                      href="https://facebook.com/"
+                      alt="facebook link"
+                    >
                       Facebook
-                    </a>
+                    </StyledLink>
                   }
                 />
                 <List.Item
                   icon="mail"
                   content={
-                    <a href="#" alt="email link">
+                    <StyledLink href="#" alt="email link">
                       Email
-                    </a>
+                    </StyledLink>
                   }
                 />
               </List>

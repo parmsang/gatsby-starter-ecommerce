@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import { Item, Button, Loader, Message, Responsive } from 'semantic-ui-react'
-import styled from 'styled-components'
 
 export default ({ items, removeFromCart, loading, completed }) => {
   if (loading) return <Loader active inline="centered" />
@@ -47,7 +46,7 @@ export default ({ items, removeFromCart, loading, completed }) => {
         childKey: id,
         header: (
           <Item.Header>
-            <Link to={`/product/${product_id}`}>{name}</Link>
+            <Link to={`/product/${product_id}/`}>{name}</Link>
           </Item.Header>
         ),
         image: (

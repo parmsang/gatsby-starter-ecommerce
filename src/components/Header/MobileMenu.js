@@ -101,7 +101,7 @@ class MobileMenu extends Component {
             Starter Store
           </Menu.Item>
           <Menu.Menu position="right">
-            <Menu.Item as={Link} to="/cart" active={activeItem === '/cart'}>
+            <Menu.Item as={Link} to="/cart/" active={activeItem === '/cart'}>
               <ShoppingCartIcon cartCount={cartCount} name="Cart" />
             </Menu.Item>
             <Menu.Item position="right">
@@ -131,25 +131,25 @@ class MobileMenu extends Component {
                   Home
                 </StyledLink>
                 <StyledDivider />
-                <StyledLink to="/cart" onClick={this.handleClose}>
+                <StyledLink to="/cart/" onClick={this.handleClose}>
                   {`Shopping Cart ${cartCount ? `(${cartCount})` : ''}`}
                 </StyledLink>
                 <StyledDivider />
                 {token ? (
-                  <StyledLink to="/myaccount" onClick={this.handleClose}>
+                  <StyledLink to="/myaccount/" onClick={this.handleClose}>
                     My Account
                   </StyledLink>
                 ) : (
                   [
                     <StyledLink
-                      to="/register"
+                      to="/register/"
                       onClick={this.handleClose}
                       key={1}
                     >
                       Sign Up
                     </StyledLink>,
                     <StyledDivider key={2} />,
-                    <StyledLink to="/login" onClick={this.handleClose} key={3}>
+                    <StyledLink to="/login/" onClick={this.handleClose} key={3}>
                       Sign In
                     </StyledLink>,
                   ]
