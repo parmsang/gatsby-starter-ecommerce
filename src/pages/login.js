@@ -82,9 +82,7 @@ export default class Login extends React.Component {
               {errors ? this.handleErrors(errors) : null}
               <Segment>
                 <Form.Field>
-                  <label style={{ fontSize: '14px' }} htmlFor="email">
-                    Email
-                  </label>
+                  <label htmlFor="email">Email</label>
                   <Input
                     id="email"
                     fluid
@@ -97,9 +95,7 @@ export default class Login extends React.Component {
                 </Form.Field>
 
                 <Form.Field>
-                  <label style={{ fontSize: '14px' }} htmlFor="password">
-                    Password
-                  </label>
+                  <label htmlFor="password">Password</label>
                   <Input
                     id="password"
                     fluid

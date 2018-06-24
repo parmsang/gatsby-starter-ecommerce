@@ -14,7 +14,6 @@ import ShoppingCartIcon from './ShoppingCartIcon'
 import Logo from './Logo'
 
 const StyledLink = styled(Link)`
-  color: black;
   font-weight: bold;
   text-align: center;
   font-size: 2em;

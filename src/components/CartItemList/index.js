@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import { Item, Button, Loader, Message, Responsive } from 'semantic-ui-react'
+import styled from 'styled-components'
 
 export default ({ items, removeFromCart, loading, completed }) => {
   if (loading) return <Loader active inline="centered" />
@@ -26,7 +27,8 @@ export default ({ items, removeFromCart, loading, completed }) => {
     items.map(({ id, product_id, name, quantity, meta, image }) => {
       const price = meta.display_price.with_tax.unit.formatted || ''
       const imageUrl = image.href || '/static/moltin-light-hex.svg'
-      const ItemImage = () => (
+
+      const DesktopItemImage = () => (
         <Item.Image
           src={imageUrl}
           alt={name}
@@ -34,14 +36,13 @@ export default ({ items, removeFromCart, loading, completed }) => {
           style={{ background: '#f2f2f2' }}
         />
       )
-      const ImageWithoutBackground = () => (
-        <Item.Image
-          src={imageUrl}
-          alt={name}
-          size="small"
-          style={{ background: 'none' }}
-        />
-      )
+
+      const MobileItemImage = styled(DesktopItemImage)`
+        &&& {
+          background: none;
+        }
+      `
+
       return {
         childKey: id,
         header: (
@@ -51,12 +52,9 @@ export default ({ items, removeFromCart, loading, completed }) => {
         ),
         image: (
           <React.Fragment>
+            <Responsive as={MobileItemImage} {...Responsive.onlyMobile} />
             <Responsive
-              as={ImageWithoutBackground}
-              {...Responsive.onlyMobile}
-            />
-            <Responsive
-              as={ItemImage}
+              as={DesktopItemImage}
               minWidth={Responsive.onlyTablet.minWidth}
             />
           </React.Fragment>
