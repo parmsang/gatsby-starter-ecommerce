@@ -46,7 +46,7 @@ exports.onCreateNode = async ({ node, boundActionCreators, cache, store }) => {
   const { createNode } = boundActionCreators
   let fileNode
 
-  if (node.internal.type === `MoltinProduct`) {
+  if (node.internal && node.internal.type === `MoltinProduct`) {
     const mainImageHref = get(node, 'includedData.main_image.link.href')
 
     fileNode = await createRemoteFileNode({
