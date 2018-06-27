@@ -54,8 +54,8 @@ module.exports = {
         name: 'Gatsby Shop App',
         short_name: 'Shop App',
         start_url: '/gatsby-starter-ecommerce/',
-        background_color: '#08AEEA',
-        theme_color: '#2AF598',
+        background_color: '#ffffff',
+        theme_color: '#ffffff',
         display: 'minimal-ui',
         icons: [
           {

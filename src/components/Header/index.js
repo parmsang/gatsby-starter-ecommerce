@@ -13,7 +13,7 @@ class Header extends React.PureComponent {
           <CartContext.Consumer>
             {cart => (
               <React.Fragment>
-                <Responsive {...Responsive.onlyMobile}>
+                <Responsive maxWidth={Responsive.onlyMobile.maxWidth}>
                   <MobileMenu
                     location={this.props.location}
                     token={auth.token}

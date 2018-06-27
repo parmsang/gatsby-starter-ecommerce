@@ -102,7 +102,7 @@ class MobileMenu extends Component {
             active={activeItem === withPrefix('/')}
           >
             <Logo />
-            Starter Store
+            Store
           </Menu.Item>
           <Menu.Menu position="right">
             <Menu.Item
@@ -110,7 +110,7 @@ class MobileMenu extends Component {
               to="/cart/"
               active={activeItem === withPrefix('/cart/')}
             >
-              <ShoppingCartIcon cartCount={cartCount} name="Cart" />
+              <ShoppingCartIcon cartCount={cartCount} name="" />
             </Menu.Item>
             <Menu.Item position="right">
               <BurgerButton
