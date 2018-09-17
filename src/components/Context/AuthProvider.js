@@ -7,7 +7,7 @@ class AuthProvider extends Component {
 
     this.updateToken = () =>
       this.setState({
-        token: localStorage.getItem('mcart'),
+        token: localStorage.getItem('customerToken'),
       })
 
     this.state = {
