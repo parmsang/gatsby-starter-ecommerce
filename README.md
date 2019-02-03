@@ -7,7 +7,7 @@ This starter adapts an [existing](https://github.com/moltin-examples/nextjs-demo
 Demo: <https://parmsang.github.io/gatsby-starter-ecommerce/>
 
 
-## Warning
+## WARNINNG
 
 This starter is currently work in progress
 
