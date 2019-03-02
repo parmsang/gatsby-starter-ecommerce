@@ -42,7 +42,13 @@ exports.createPages = ({ graphql, actions }) => {
   })
 }
 
-exports.onCreateNode = async ({ node, actions, cache, store }) => {
+exports.onCreateNode = async ({
+  node,
+  actions,
+  cache,
+  store,
+  createNodeId,
+}) => {
   const { createNode } = actions
   let fileNode
 
@@ -54,6 +60,7 @@ exports.onCreateNode = async ({ node, actions, cache, store }) => {
       store,
       cache,
       createNode,
+      createNodeId,
     })
     if (fileNode && fileNode.id) node.mainImage___NODE = fileNode.id
   }
