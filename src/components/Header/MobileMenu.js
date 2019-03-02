@@ -45,7 +45,7 @@ const CloseButton = BurgerButton.extend`
 const StyledSegment = styled(Segment)`
   &&& {
     position: fixed;
-    top: 0%;
+    top: -1em;
     left: 0vw;
     z-index: 1000;
     width: 100vw;

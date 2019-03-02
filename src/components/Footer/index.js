@@ -42,9 +42,10 @@ const Footer = () => (
               Extra space for a call to action inside the footer that could help
               re-engage users.
             </p>
-            <List horizontal>
+            <List horizontal style={{ display: 'flex' }}>
               <List.Item
                 icon="twitter"
+                style={{ display: 'flex' }}
                 content={
                   <a href="https://twitter.com/parmsang" alt="twitter link">
                     Twitter
@@ -53,6 +54,7 @@ const Footer = () => (
               />
               <List.Item
                 icon="facebook"
+                style={{ display: 'flex' }}
                 content={
                   <a href="https://facebook.com/" alt="facebook link">
                     Facebook
@@ -61,6 +63,7 @@ const Footer = () => (
               />
               <List.Item
                 icon="mail"
+                style={{ display: 'flex' }}
                 content={
                   <a href="#" alt="email link">
                     Email
