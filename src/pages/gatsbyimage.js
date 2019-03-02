@@ -3,11 +3,11 @@ import Img from 'gatsby-image'
 import Helmet from 'react-helmet'
 import Layout from '../components/Layout'
 
-const About = ({ data }) => (
-  <Layout>
+const About = props => (
+  <Layout location={props.location}>
     <Helmet title="Gatsby Image" />
     <h3>Images displayed here utilise the Gatsby-Image plugin</h3>
-    <Img sizes={data.background.sizes} alt="Big Lamp" />
+    <Img sizes={props.data.background.sizes} alt="Big Lamp" />
     <Img
       style={{
         position: 'absolute',
@@ -18,7 +18,7 @@ const About = ({ data }) => (
         opacity: 0.3,
         zIndex: 0,
       }}
-      sizes={data.background.sizes}
+      sizes={props.data.background.sizes}
       alt="Big Lamp"
     />
   </Layout>

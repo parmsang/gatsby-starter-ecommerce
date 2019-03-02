@@ -2,8 +2,8 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Layout from '../components/Layout'
 
-const Terms = () => (
-  <Layout>
+const Terms = props => (
+  <Layout location={props.location}>
     <Helmet title="Terms" />
     <h1>Terms</h1>
     <p>

@@ -69,7 +69,7 @@ export default class Login extends React.Component {
     const { loading, errors } = this.state
 
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         <AuthContext.Consumer>
           {context => (
             <React.Fragment>

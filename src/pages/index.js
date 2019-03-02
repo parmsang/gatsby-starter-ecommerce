@@ -16,7 +16,7 @@ class StoreIndex extends React.Component {
       v => v.node.includedData.main_image
     )
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         <Helmet title={siteTitle} />
         <Header as="h3" icon textAlign="center" style={{ marginBottom: '2em' }}>
           <Header.Content style={{ width: '60%', margin: '0 auto' }}>

@@ -83,7 +83,7 @@ export default class Cart extends React.Component {
     const { meta, ...rest } = this.state
     const { loading } = rest
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         <Helmet title="Cart" />
         <CartContext.Consumer>
           {context => (

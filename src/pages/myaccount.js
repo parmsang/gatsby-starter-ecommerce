@@ -43,7 +43,7 @@ export default class MyAccount extends React.Component {
 
   render() {
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         <Helmet title="My Account" />
         <OrderItemList {...this.state} />
       </Layout>

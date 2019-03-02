@@ -65,7 +65,7 @@ export default class Register extends React.Component {
     const { loading, errors } = this.state
 
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         <AuthContext.Consumer>
           {context => (
             <React.Fragment>

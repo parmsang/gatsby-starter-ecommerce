@@ -2,8 +2,8 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Layout from '../components/Layout'
 
-const Privacy = () => (
-  <Layout>
+const Privacy = props => (
+  <Layout location={props.location}>
     <Helmet title="Privacy" />
     <h1>Privacy</h1>
     <p>

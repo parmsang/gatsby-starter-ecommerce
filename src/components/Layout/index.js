@@ -53,7 +53,7 @@ class Layout extends React.PureComponent {
           >
             <Header location={location} />
           </Headroom>
-          <Container text>{children()}</Container>
+          <Container text>{children}</Container>
           <Footer />
         </CartProvider>
       </AuthProvider>
