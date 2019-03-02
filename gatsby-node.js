@@ -59,7 +59,7 @@ exports.onCreateNode = async ({ node, actions, cache, store }) => {
   }
 }
 
-exports.modifyWebpackConfig = ({ config }) => {
+exports.onCreateWebpackConfig = ({ config }) => {
   config.merge({
     node: { fs: 'empty' },
   })
