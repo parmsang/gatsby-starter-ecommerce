@@ -10,7 +10,6 @@
     "@moltin/sdk": "^3.10.0",
     "gatsby": "^2.1.19",
     "gatsby-image": "^2.0.30",
-    "gatsby-link": "^2.0.13",
     "gatsby-plugin-google-analytics": "^2.0.15",
     "gatsby-plugin-manifest": "^2.0.20",
     "gatsby-plugin-nprogress": "^2.0.8",
