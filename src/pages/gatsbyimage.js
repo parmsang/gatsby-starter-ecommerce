@@ -1,6 +1,7 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import Helmet from 'react-helmet'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 
 const About = props => (
