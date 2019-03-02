@@ -6,6 +6,7 @@ import { Image, Header } from 'semantic-ui-react'
 import Helmet from 'react-helmet'
 import ProductList from '../components/ProductList'
 import logo from '../images/ill-short-dark.svg'
+import Layout from "../components/Layout"
 
 class StoreIndex extends React.Component {
   render() {
@@ -15,7 +16,7 @@ class StoreIndex extends React.Component {
       v => v.node.includedData.main_image
     )
     return (
-      <div>
+      <Layout>
         <Helmet title={siteTitle} />
         <Header as="h3" icon textAlign="center" style={{ marginBottom: '2em' }}>
           <Header.Content style={{ width: '60%', margin: '0 auto' }}>
@@ -23,7 +24,7 @@ class StoreIndex extends React.Component {
           </Header.Content>
         </Header>
         <ProductList products={filterProductsWithoutImages} />
-      </div>
+      </Layout>
     )
   }
 }

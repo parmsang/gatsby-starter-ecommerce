@@ -1,8 +1,9 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import Layout from '../components/Layout'
 
 const Privacy = () => (
-  <div>
+  <Layout>
     <Helmet title="Privacy" />
     <h1>Privacy</h1>
     <p>
@@ -17,7 +18,7 @@ const Privacy = () => (
       gangsta ac, eleifend vitae, shizzlin dizzle. Mammasay mammasa mamma oo sa
       suscipizzle. Shizzle my nizzle crocodizzle semper velit sed purizzle.
     </p>
-  </div>
+  </Layout>
 )
 
 export default Privacy

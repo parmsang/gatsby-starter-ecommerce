@@ -1,9 +1,10 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import Helmet from 'react-helmet'
+import Layout from '../components/Layout'
 
 const About = ({ data }) => (
-  <div>
+  <Layout>
     <Helmet title="Gatsby Image" />
     <h3>Images displayed here utilise the Gatsby-Image plugin</h3>
     <Img sizes={data.background.sizes} alt="Big Lamp" />
@@ -20,7 +21,7 @@ const About = ({ data }) => (
       sizes={data.background.sizes}
       alt="Big Lamp"
     />
-  </div>
+  </Layout>
 )
 
 export const query = graphql`

@@ -2,6 +2,7 @@ import React from 'react'
 import { navigateTo } from 'gatsby-link'
 import Helmet from 'react-helmet'
 import OrderItemList from '../components/OrderItemList'
+import Layout from '../components/Layout'
 
 import { getOrders } from '../../lib/moltin'
 
@@ -42,10 +43,10 @@ export default class MyAccount extends React.Component {
 
   render() {
     return (
-      <div>
+      <Layout>
         <Helmet title="My Account" />
         <OrderItemList {...this.state} />
-      </div>
+      </Layout>
     )
   }
 }

@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 import CartItemList from '../components/CartItemList/'
 import CartSummary from '../components/CartSummary/'
 import CartContext from '../components/Context/CartContext'
+import Layout from '../components/Layout'
 
 const Moltin = require('../../lib/moltin')
 
@@ -82,7 +83,7 @@ export default class Cart extends React.Component {
     const { meta, ...rest } = this.state
     const { loading } = rest
     return (
-      <div>
+      <Layout>
         <Helmet title="Cart" />
         <CartContext.Consumer>
           {context => (
@@ -92,11 +93,10 @@ export default class Cart extends React.Component {
             />
           )}
         </CartContext.Consumer>
-        {!loading &&
-          !rest.completed && (
-            <CartSummary {...meta} handleCheckout={this._handleCheckout} />
-          )}
-      </div>
+        {!loading && !rest.completed && (
+          <CartSummary {...meta} handleCheckout={this._handleCheckout} />
+        )}
+      </Layout>
     )
   }
 }

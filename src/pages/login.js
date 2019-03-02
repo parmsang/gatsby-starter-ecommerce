@@ -11,6 +11,7 @@ import {
 import Helmet from 'react-helmet'
 import { login } from '../../lib/moltin'
 import AuthContext from '../components/Context/AuthContext'
+import Layout from '../components/Layout'
 
 export default class Login extends React.Component {
   state = {
@@ -68,52 +69,54 @@ export default class Login extends React.Component {
     const { loading, errors } = this.state
 
     return (
-      <AuthContext.Consumer>
-        {context => (
-          <React.Fragment>
-            <Helmet title="Login" />
-            <Header as="h1">Log in to your account</Header>
+      <Layout>
+        <AuthContext.Consumer>
+          {context => (
+            <React.Fragment>
+              <Helmet title="Login" />
+              <Header as="h1">Log in to your account</Header>
 
-            <Form
-              onSubmit={e => this._handleSubmit(e, context)}
-              loading={loading}
-              error={!!errors}
-            >
-              {errors ? this.handleErrors(errors) : null}
-              <Segment>
-                <Form.Field>
-                  <label htmlFor="email">Email</label>
-                  <Input
-                    id="email"
-                    fluid
-                    name="email"
-                    type="email"
-                    autoFocus
-                    onChange={e => this._handleChange(e)}
-                    required
-                  />
-                </Form.Field>
+              <Form
+                onSubmit={e => this._handleSubmit(e, context)}
+                loading={loading}
+                error={!!errors}
+              >
+                {errors ? this.handleErrors(errors) : null}
+                <Segment>
+                  <Form.Field>
+                    <label htmlFor="email">Email</label>
+                    <Input
+                      id="email"
+                      fluid
+                      name="email"
+                      type="email"
+                      autoFocus
+                      onChange={e => this._handleChange(e)}
+                      required
+                    />
+                  </Form.Field>
 
-                <Form.Field>
-                  <label htmlFor="password">Password</label>
-                  <Input
-                    id="password"
-                    fluid
-                    name="password"
-                    type="password"
-                    required
-                    onChange={e => this._handleChange(e)}
-                  />
-                </Form.Field>
+                  <Form.Field>
+                    <label htmlFor="password">Password</label>
+                    <Input
+                      id="password"
+                      fluid
+                      name="password"
+                      type="password"
+                      required
+                      onChange={e => this._handleChange(e)}
+                    />
+                  </Form.Field>
 
-                <Button type="submit" color="orange">
-                  Login
-                </Button>
-              </Segment>
-            </Form>
-          </React.Fragment>
-        )}
-      </AuthContext.Consumer>
+                  <Button type="submit" color="orange">
+                    Login
+                  </Button>
+                </Segment>
+              </Form>
+            </React.Fragment>
+          )}
+        </AuthContext.Consumer>
+      </Layout>
     )
   }
 }

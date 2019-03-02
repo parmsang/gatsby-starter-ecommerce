@@ -4,10 +4,10 @@ import Headroom from 'react-headroom'
 import Helmet from 'react-helmet'
 import { withPrefix } from 'gatsby-link'
 import 'semantic-ui-css/semantic.min.css'
-import AuthProvider from '../components/Context/AuthProvider'
-import CartProvider from '../components/Context/CartProvider'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import AuthProvider from '../Context/AuthProvider'
+import CartProvider from '../Context/CartProvider'
+import Header from '../Header'
+import Footer from '../Footer'
 
 class Layout extends React.PureComponent {
   render() {
