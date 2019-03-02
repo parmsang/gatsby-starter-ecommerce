@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Link, { withPrefix } from 'gatsby-link'
+import { Link, withPrefix } from 'gatsby'
 import {
   Menu,
   Container,

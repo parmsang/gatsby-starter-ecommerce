@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import { Segment, Container, Grid, List, Header } from 'semantic-ui-react'
 
 const Footer = () => (

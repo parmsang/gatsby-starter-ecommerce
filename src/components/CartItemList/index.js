@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import { Item, Button, Loader, Message, Responsive } from 'semantic-ui-react'
 import styled from 'styled-components'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { navigateTo } from 'gatsby-link'
+import { navigate } from 'gatsby'
 import {
   Header,
   Form,
@@ -36,7 +36,7 @@ export default class Login extends React.Component {
         localStorage.setItem('customerToken', token)
         localStorage.setItem('mcustomer', id)
         context.updateToken()
-        navigateTo('/myaccount/')
+        navigate('/myaccount/')
       })
       .catch(e => {
         console.log(e.message)

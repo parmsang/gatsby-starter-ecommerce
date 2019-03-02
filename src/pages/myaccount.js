@@ -1,5 +1,5 @@
 import React from 'react'
-import { navigateTo } from 'gatsby-link'
+import { navigate } from 'gatsby'
 import Helmet from 'react-helmet'
 import OrderItemList from '../components/OrderItemList'
 import Layout from '../components/Layout'
@@ -16,7 +16,7 @@ export default class MyAccount extends React.Component {
     const token = localStorage.getItem('customerToken')
 
     if (!token) {
-      navigateTo('/login/')
+      navigate('/login/')
     }
     getOrders(token)
       .then(({ data, included, meta }) => {

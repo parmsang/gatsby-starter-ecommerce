@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Image, Label } from 'semantic-ui-react'
 import Img from 'gatsby-image'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 
 const mapProductsToItems = products =>
   products.map(

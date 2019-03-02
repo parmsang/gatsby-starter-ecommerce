@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Link, { withPrefix } from 'gatsby-link'
+import { Link, withPrefix } from 'gatsby'
 import { Menu, Container, Icon } from 'semantic-ui-react'
 import ShoppingCartIcon from './ShoppingCartIcon'
 import Logo from './Logo'

@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import { Header, Loader, Message, Label, Segment } from 'semantic-ui-react'
 
 export default ({ orders, loading }) => {
