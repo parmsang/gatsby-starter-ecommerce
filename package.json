@@ -22,7 +22,10 @@
     "gatsby-source-filesystem": "^2.0.23",
     "gatsby-transformer-sharp": "^2.1.15",
     "lodash": "^4.17.5",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-headroom": "^2.2.2",
+    "react-helmet": "^5.2.0",
     "react-stripe-checkout": "^2.6.3",
     "semantic-ui-css": "^2.3.1",
     "semantic-ui-react": "^0.80.2",
@@ -30,6 +33,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
+    "babel-plugin-styled-components": "^1.10.0",
     "dotenv": "^6.0.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
