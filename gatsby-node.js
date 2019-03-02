@@ -4,8 +4,8 @@ const get = require('lodash/get')
 
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
 
   return new Promise((resolve, reject) => {
     const productPageTemplate = path.resolve('src/templates/ProductPage.js')
@@ -42,8 +42,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   })
 }
 
-exports.onCreateNode = async ({ node, boundActionCreators, cache, store }) => {
-  const { createNode } = boundActionCreators
+exports.onCreateNode = async ({ node, actions, cache, store }) => {
+  const { createNode } = actions
   let fileNode
 
   if (node.internal && node.internal.type === `MoltinProduct`) {

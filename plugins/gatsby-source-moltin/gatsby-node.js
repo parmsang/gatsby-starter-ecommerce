@@ -9,10 +9,10 @@ const fromPairs = pairs =>
   }, {})
 
 exports.sourceNodes = async (
-  { boundActionCreators, createNodeId },
+  { actions, createNodeId },
   configOptions
 ) => {
-  const { createNode } = boundActionCreators
+  const { createNode } = actions
 
   delete configOptions.plugins
 
