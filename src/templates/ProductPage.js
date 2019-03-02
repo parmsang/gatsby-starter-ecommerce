@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import get from 'lodash/get'
 import ProductSummary from '../components/ProductSummary'
 import ProductAttributes from '../components/ProductAttributes'
+import Layout from '../components/Layout'
 
 class ProductPageTemplate extends React.PureComponent {
   render() {
@@ -26,11 +27,11 @@ class ProductPageTemplate extends React.PureComponent {
     if(!sizes) return null
 
     return (
-      <div>
+      <Layout location={this.props.location}>
         <Helmet title={slug} />
         <ProductSummary {...product} />
         <ProductAttributes {...product} />
-      </div>
+      </Layout>
     )
   }
 }
