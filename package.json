@@ -25,8 +25,8 @@
     "react-headroom": "^2.2.2",
     "react-helmet": "^5.2.0",
     "react-stripe-checkout": "^2.6.3",
-    "semantic-ui-css": "^2.3.1",
-    "semantic-ui-react": "^0.80.2",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.85.0",
     "styled-components": "^3.3.0"
   },
   "devDependencies": {
