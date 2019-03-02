@@ -15,7 +15,6 @@
     "gatsby-plugin-nprogress": "^2.0.8",
     "gatsby-plugin-offline": "^2.0.24",
     "gatsby-plugin-react-helmet": "^3.0.7",
-    "gatsby-plugin-react-next": "^1.0.11",
     "gatsby-plugin-sharp": "^2.0.23",
     "gatsby-plugin-styled-components": "^3.0.6",
     "gatsby-source-filesystem": "^2.0.23",
