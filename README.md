@@ -6,6 +6,7 @@ This starter adapts an [existing](https://github.com/moltin-examples/nextjs-demo
 
 Demo: <https://parmsang.github.io/gatsby-starter-ecommerce/>
 
+This starter originally used Gatsby v1 and has now been updated to v2. The original version can be found in branch "gatsby-v1".
 
 ## Warning
 
