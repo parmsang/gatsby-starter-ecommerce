@@ -14,7 +14,7 @@ class StoreIndex extends React.Component {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const products = get(this, 'props.data.allMoltinProduct.edges')
     const filterProductsWithoutImages = products.filter(
-      v => v.node.includedData.main_image
+      v => v.node.mainImageHref
     )
     return (
       <Layout location={this.props.location}>
@@ -42,25 +42,18 @@ export const pageQuery = graphql`
     allMoltinProduct {
       edges {
         node {
-          originalId
+          id
           name
           description
           background_colour
           new
+          mainImageHref
           meta {
             display_price {
               with_tax {
                 amount
                 currency
                 formatted
-              }
-            }
-          }
-          includedData {
-            main_image {
-              id
-              link {
-                href
               }
             }
           }

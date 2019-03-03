@@ -6,20 +6,13 @@ import { Link } from 'gatsby'
 const mapProductsToItems = products =>
   products.map(
     ({
-      node: {
-        name,
-        originalId,
-        meta,
-        mainImage,
-        background_colour,
-        new: isNew,
-      },
+      node: { name, id, meta, mainImage, background_colour, new: isNew },
     }) => {
       const price = meta.display_price.with_tax.formatted || null
       return {
         as: Link,
-        to: `/product/${originalId}/`,
-        childKey: originalId,
+        to: `/product/${id}/`,
+        childKey: id,
         image: (
           <Image>
             {isNew ? (

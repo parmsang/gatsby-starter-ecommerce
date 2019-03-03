@@ -16,7 +16,7 @@ exports.createPages = ({ graphql, actions }) => {
             allMoltinProduct {
               edges {
                 node {
-                  originalId
+                  id
                 }
               }
             }
@@ -27,13 +27,12 @@ exports.createPages = ({ graphql, actions }) => {
           console.log(result.errors)
           reject(result.errors)
         }
-
         result.data.allMoltinProduct.edges.forEach(edge => {
           createPage({
-            path: `/product/${edge.node.originalId}/`,
+            path: `/product/${edge.node.id}/`,
             component: productPageTemplate,
             context: {
-              originalId: edge.node.originalId,
+              id: edge.node.id,
             },
           })
         })
@@ -53,7 +52,7 @@ exports.onCreateNode = async ({
   let fileNode
 
   if (node.internal && node.internal.type === `MoltinProduct`) {
-    const mainImageHref = get(node, 'includedData.main_image.link.href')
+    const mainImageHref = get(node, 'mainImageHref')
 
     fileNode = await createRemoteFileNode({
       url: mainImageHref,

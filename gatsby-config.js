@@ -12,12 +12,11 @@ module.exports = {
   pathPrefix: '/gatsby-starter-ecommerce',
   plugins: [
     {
-      resolve: 'gatsby-source-moltin',
+      resolve: '@moltin/gatsby-source-moltin',
       options: {
-        key:
+        client_id:
           process.env.MOLTIN_CLIENT_ID ||
           'j6hSilXRQfxKohTndUuVrErLcSJWP15P347L6Im0M4',
-        products: ['main_image', 'brands', 'files', 'categories'],
       },
     },
     {

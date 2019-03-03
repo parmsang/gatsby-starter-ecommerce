@@ -7,6 +7,7 @@
     "url": "https://github.com/parmsang/gatsby-starter-ecommerce"
   },
   "dependencies": {
+    "@moltin/gatsby-source-moltin": "^1.2.1",
     "@moltin/sdk": "^3.18.2",
     "gatsby": "^2.1.19",
     "gatsby-image": "^2.0.30",
