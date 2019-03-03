@@ -30,7 +30,7 @@ const BurgerButton = styled(Button)`
       0 0 0 0 rgba(34, 36, 38, 0.15) inset;
   }
 `
-const CloseButton = BurgerButton.extend`
+const CloseButton = styled(BurgerButton)`
   &&& {
     position: absolute;
     top: -4em;

@@ -24,7 +24,7 @@ class ProductPageTemplate extends React.PureComponent {
       sku: data.sku,
     }
 
-    if(!sizes) return null
+    if (!sizes) return null
 
     return (
       <Layout location={this.props.location}>
