@@ -1,7 +1,7 @@
 {
   "name": "gatsby-starter-ecommerce",
   "description": "Gatsby starter ecommerce",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Parminder Sanghera",
   "bugs": {
     "url": "https://github.com/parmsang/gatsby-starter-ecommerce"
@@ -46,9 +46,7 @@
     "regenerator-runtime": "^0.11.1"
   },
   "homepage": "https://github.com/parmsang/gatsby-starter-ecommerce",
-  "keywords": [
-    "gatsby"
-  ],
+  "keywords": ["gatsby"],
   "license": "MIT",
   "main": "n/a",
   "repository": {
@@ -62,7 +60,9 @@
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "develop": "rm -rf .cache && gatsby develop",
     "build": "rm -rf .cache && gatsby build",
-    "deploy": "rm -rf .cache && gatsby build --prefix-paths && gh-pages -d public",
-    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
+    "deploy":
+      "rm -rf .cache && gatsby build --prefix-paths && gh-pages -d public",
+    "fix-semi":
+      "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
   }
 }

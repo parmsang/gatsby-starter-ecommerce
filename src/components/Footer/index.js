@@ -31,9 +31,6 @@ const Footer = () => (
               <List.Item as={Link} to="/">
                 Our Products
               </List.Item>
-              <List.Item as={Link} to="/gatsbyimage/">
-                Gatsby Image Example
-              </List.Item>
             </List>
           </Grid.Column>
           <Grid.Column width={7}>
