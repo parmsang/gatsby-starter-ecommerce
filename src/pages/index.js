@@ -1,38 +1,17 @@
 /* eslint-disable */
 
 import React from 'react'
-import { graphql } from 'gatsby'
+import {graphql, useStaticQuery} from 'gatsby'
 import get from 'lodash/get'
-import { Image, Header } from 'semantic-ui-react'
+import {Image, Header} from 'semantic-ui-react'
 import Helmet from 'react-helmet'
 import ProductList from '../components/ProductList'
 import logo from '../images/ill-short-dark.svg'
 import Layout from '../components/Layout'
 
-class StoreIndex extends React.Component {
-  render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const products = get(this, 'props.data.allMoltinProduct.edges')
-    const filterProductsWithoutImages = products.filter(
-      v => v.node.mainImageHref
-    )
-    return (
-      <Layout location={this.props.location}>
-        <Helmet title={siteTitle} />
-        <Header as="h3" icon textAlign="center" style={{ marginBottom: '2em' }}>
-          <Header.Content style={{ width: '60%', margin: '0 auto' }}>
-            <Image src={logo} alt={'logo'} />
-          </Header.Content>
-        </Header>
-        <ProductList products={filterProductsWithoutImages} />
-      </Layout>
-    )
-  }
-}
+export default StoreIndex = (props) => {
 
-export default StoreIndex
-
-export const pageQuery = graphql`
+  const data = useStaticQuery(graphql `
   query IndexQuery {
     site {
       siteMetadata {
@@ -68,4 +47,30 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+  `)
+
+  const siteTitle = get(data, 'site.siteMetadata.title')
+  const products = get(data, 'allMoltinProduct.edges')
+  const filterProductsWithoutImages = products.filter(v => v.node.mainImageHref)
+  return (
+    <Layout location={props.location}>
+      <Helmet title={siteTitle}/>
+      <Header
+        as="h3"
+        icon
+        textAlign="center"
+        style={{
+        marginBottom: '2em'
+      }}>
+        <Header.Content
+          style={{
+          width: '60%',
+          margin: '0 auto'
+        }}>
+          <Image src={logo} alt={'logo'}/>
+        </Header.Content>
+      </Header>
+      <ProductList products={filterProductsWithoutImages}/>
+    </Layout>
+  )
+}
