@@ -17,7 +17,7 @@ import AuthContext from '../components/Context/AuthContext'
 import Layout from '../components/Layout'
 import useForm from '../components/Hooks/useForm'
 
-const LoginForm = () => {
+const LoginPage = ({ location }) => {
   const [loading, setLoading] = useState(false)
   const [apiError, setApiError] = useState([])
   const { updateToken } = useContext(AuthContext)
@@ -56,53 +56,51 @@ const LoginForm = () => {
     ))
   }
   return (
-    <Form
-      onSubmit={handleSubmit}
-      loading={loading}
-      error={apiError.length !== 0 || Object.entries(errors).length !== 0}
-    >
-      {apiError.length !== 0 ? handleErrors(errors) : null}
-      <Segment>
-        <Form.Field>
-          <label htmlFor="email">Email</label>
-          <Input
-            id="email"
-            fluid
-            name="email"
-            type="email"
-            autoFocus
-            onChange={handleChange}
-            value={values.email || ''}
-          />
-        </Form.Field>
-        {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
-        <Form.Field>
-          <label htmlFor="password">Password</label>
-          <Input
-            id="password"
-            fluid
-            name="password"
-            type="password"
-            value={values.password || ''}
-            onChange={handleChange}
-          />
-        </Form.Field>
-        {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
-        <Button type="submit" color="orange">
-          Login
-        </Button>
-      </Segment>
-    </Form>
+    <Layout location={location}>
+      <Helmet title="Login" />
+      <Header as="h1">Log in to your account</Header>
+      <Form
+        onSubmit={handleSubmit}
+        loading={loading}
+        error={apiError.length !== 0 || Object.entries(errors).length !== 0}
+      >
+        {apiError.length !== 0 ? handleErrors(errors) : null}
+        <Segment>
+          <Form.Field>
+            <label htmlFor="email">Email</label>
+            <Input
+              id="email"
+              fluid
+              name="email"
+              type="email"
+              autoFocus
+              onChange={handleChange}
+              value={values.email || ''}
+            />
+          </Form.Field>
+          {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
+          <Form.Field>
+            <label htmlFor="password">Password</label>
+            <Input
+              id="password"
+              fluid
+              name="password"
+              type="password"
+              value={values.password || ''}
+              onChange={handleChange}
+            />
+          </Form.Field>
+          {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
+          <Button type="submit" color="orange">
+            Login
+          </Button>
+        </Segment>
+      </Form>
+    </Layout>
   )
 }
 
-export default ({ location }) => (
-  <Layout location={location}>
-    <Helmet title="Login" />
-    <Header as="h1">Log in to your account</Header>
-    <LoginForm />
-  </Layout>
-)
+export default LoginPage
 
 const validate = values => {
   const errors = {}

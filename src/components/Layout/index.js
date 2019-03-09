@@ -4,8 +4,6 @@ import Headroom from 'react-headroom'
 import Helmet from 'react-helmet'
 import { withPrefix } from 'gatsby'
 import 'semantic-ui-css/semantic.min.css'
-import AuthProvider from '../Context/AuthProvider'
-import CartProvider from '../Context/CartProvider'
 import Header from '../Header'
 import Footer from '../Footer'
 
@@ -14,49 +12,47 @@ class Layout extends React.PureComponent {
     const { location, children } = this.props
 
     return (
-      <AuthProvider>
-        <CartProvider>
-          <Helmet
-            meta={[
-              {
-                name: 'description',
-                content: 'A starter eCommerce website made using GatsbyJS',
-              },
-              { name: 'keywords', content: 'ecommerce, gatsby, moltin' },
-              { name: 'msapplication-TileColor', content: '#da532c' },
-              { name: 'theme-color', content: '#ffffff' },
-            ]}
-          >
-            <html lang="en" />
-            <link
-              rel="apple-touch-icon"
-              sizes="180x180"
-              href={withPrefix('/favicons/apple-touch-icon.png')}
-            />
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="32x32"
-              href={withPrefix('/favicons/favicon-32x32.png')}
-            />
-            <link
-              rel="icon"
-              type="image/png"
-              sizes="16x16"
-              href={withPrefix('/favicons/favicon-16x16.png')}
-            />
-          </Helmet>
-          <Headroom
-            upTolerance={10}
-            downTolerance={10}
-            style={{ zIndex: '20', height: '6.5em' }}
-          >
-            <Header location={location} />
-          </Headroom>
-          <Container text>{children}</Container>
-          <Footer />
-        </CartProvider>
-      </AuthProvider>
+      <>
+        <Helmet
+          meta={[
+            {
+              name: 'description',
+              content: 'A starter eCommerce website made using GatsbyJS',
+            },
+            { name: 'keywords', content: 'ecommerce, gatsby, moltin' },
+            { name: 'msapplication-TileColor', content: '#da532c' },
+            { name: 'theme-color', content: '#ffffff' },
+          ]}
+        >
+          <html lang="en" />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href={withPrefix('/favicons/apple-touch-icon.png')}
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href={withPrefix('/favicons/favicon-32x32.png')}
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href={withPrefix('/favicons/favicon-16x16.png')}
+          />
+        </Helmet>
+        <Headroom
+          upTolerance={10}
+          downTolerance={10}
+          style={{ zIndex: '20', height: '6.5em' }}
+        >
+          <Header location={location} />
+        </Headroom>
+        <Container text>{children}</Container>
+        <Footer />
+      </>
     )
   }
 }
