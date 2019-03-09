@@ -1,34 +1,37 @@
-import React from 'react'
+/* eslint-disable camelcase */
+import React, { useState, useContext, useEffect } from 'react'
 import Helmet from 'react-helmet'
-import CartItemList from '../components/CartItemList/'
-import CartSummary from '../components/CartSummary/'
+import CartItemList from '../components/CartItemList'
+import CartSummary from '../components/CartSummary'
 import CartContext from '../components/Context/CartContext'
 import Layout from '../components/Layout'
 
 const Moltin = require('../../lib/moltin')
 
-export default class Cart extends React.Component {
-  state = {
-    items: [],
-    loading: true,
-    completed: false,
-  }
+const Cart = ({ location }) => {
+  const [loading, setLoading] = useState(true)
+  const [items, setItems] = useState([])
+  const [completed, setCompleted] = useState(false)
+  const [meta, setMeta] = useState({})
+  const [cartId, setCartId] = useState({})
+  const { updateCartCount } = useContext(CartContext)
 
-  componentDidMount() {
-    const cartId = localStorage.getItem('mcart')
-    Moltin.getCartItems(cartId).then(({ data, meta }) => {
-      this.setState({
-        items: data,
-        meta,
-        cartId,
-        loading: false,
-      })
+  async function getCartItems() {
+    const cartIdLocal = localStorage.getItem('mcart')
+    await Moltin.getCartItems(cartIdLocal).then(({ data, meta }) => {
+      setItems(data)
+      setMeta(meta)
+      setCartId(cartIdLocal)
+      setLoading(false)
     })
   }
 
-  _handleCheckout = data => {
+  useEffect(() => {
+    getCartItems()
+  }, [])
+
+  const handleCheckout = data => {
     const cartId = localStorage.getItem('mcart')
-    const customerId = localStorage.getItem('mcustomer')
 
     const {
       id: token,
@@ -58,45 +61,36 @@ export default class Cart extends React.Component {
     Moltin.checkoutCart(cartId, customer, address)
       .then(({ data: { id } }) => {
         Moltin.payForOrder(id, token, email)
-        this.setState({
-          completed: true,
-        })
+        setCompleted(true)
       })
       .catch(e => {
         console.log(e)
       })
   }
 
-  _handleRemoveFromCart = (itemId, context) => {
-    const { cartId } = this.state
+  const handleRemoveFromCart = itemId => {
     Moltin.removeFromCart(itemId, cartId).then(({ data, meta }) => {
       const total = data.reduce((a, c) => a + c.quantity, 0)
-      context.updateCartCount(total, cartId)
-      this.setState({
-        items: data,
-        meta,
-      })
+      updateCartCount(total, cartId)
+      setItems(data)
+      setMeta(meta)
     })
   }
 
-  render() {
-    const { meta, ...rest } = this.state
-    const { loading } = rest
-    return (
-      <Layout location={this.props.location}>
-        <Helmet title="Cart" />
-        <CartContext.Consumer>
-          {context => (
-            <CartItemList
-              {...rest}
-              removeFromCart={item => this._handleRemoveFromCart(item, context)}
-            />
-          )}
-        </CartContext.Consumer>
-        {!loading && !rest.completed && (
-          <CartSummary {...meta} handleCheckout={this._handleCheckout} />
-        )}
-      </Layout>
-    )
-  }
+  const rest = { completed, items, loading, cartId }
+
+  return (
+    <Layout location={location}>
+      <Helmet title="Cart" />
+      <CartItemList
+        {...rest}
+        removeFromCart={item => handleRemoveFromCart(item)}
+      />
+      {!loading && !completed && (
+        <CartSummary {...meta} handleCheckout={handleCheckout} />
+      )}
+    </Layout>
+  )
 }
+
+export default Cart
