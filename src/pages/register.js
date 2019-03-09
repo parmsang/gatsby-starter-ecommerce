@@ -1,4 +1,7 @@
-import React from 'react'
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-use-before-define */
+
+import React, { useState, useContext } from 'react'
 import { navigate } from 'gatsby'
 import {
   Header,
@@ -12,118 +15,117 @@ import Helmet from 'react-helmet'
 import AuthContext from '../components/Context/AuthContext'
 import { register } from '../../lib/moltin'
 import Layout from '../components/Layout'
+import useForm from '../components/Hooks/useForm'
 
-export default class Register extends React.Component {
-  state = {
-    name: '',
-    email: '',
-    password: '',
-    loading: false,
-    errors: null,
-  }
+const Register = ({ location }) => {
+  const [loading, setLoading] = useState(false)
+  const [apiError, setApiError] = useState([])
+  const { updateToken } = useContext(AuthContext)
 
-  _handleSubmit = (e, context) => {
-    e.preventDefault()
-
-    const { name, email, password } = this.state
-
-    this.setState({
-      loading: true,
+  const formRegister = () => {
+    setLoading(true)
+    register({
+      name: values.name,
+      email: values.email,
+      password: values.password,
     })
-    register({ name, email, password })
       .then(data => {
         const { id, token } = data
         localStorage.setItem('customerToken', token)
         localStorage.setItem('mcustomer', id)
-        context.updateToken()
+        updateToken()
         navigate('/myaccount/')
       })
       .catch(e => {
         console.log(e)
-        this.setState({
-          loading: false,
-          errors: e.errors || e,
-        })
+        setLoading(false)
+        setApiError(e.errors || e)
       })
   }
 
-  _handleChange = ({ target: { name, value } }) =>
-    this.setState({ [name]: value })
+  const { values, handleChange, handleSubmit, errors } = useForm(
+    formRegister,
+    validate
+  )
 
-  handleErrors = errors => {
+  const handleErrors = errors => {
     if (!Array.isArray(errors) && !errors.length > 0) {
       return (
         <Message error header="Sorry" content="Cannot register at this time." />
       )
     }
-    return errors.map((error, i) => (
-      <Message error header={error.title} content={error.detail} key={i} />
+    return errors.map(e => (
+      <Message error header={e.title} content={e.detail} key={e.status} />
     ))
   }
 
-  render() {
-    const { loading, errors } = this.state
+  return (
+    <Layout location={location}>
+      <Helmet title="Register" />
+      <Header as="h1">Create an account</Header>
+      <Form onSubmit={handleSubmit} loading={loading} error={!!errors}>
+        {apiError.length !== 0 ? handleErrors(errors) : null}
+        <Segment>
+          <Form.Field>
+            <label htmlFor="name">Name</label>
+            <Input
+              id="name"
+              fluid
+              name="name"
+              autoFocus
+              onChange={handleChange}
+              value={values.name || ''}
+            />
+          </Form.Field>
+          {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
 
-    return (
-      <Layout location={this.props.location}>
-        <AuthContext.Consumer>
-          {context => (
-            <React.Fragment>
-              <Helmet title="Register" />
-              <Header as="h1">Create an account</Header>
+          <Form.Field>
+            <label htmlFor="email">Email</label>
+            <Input
+              id="email"
+              fluid
+              name="email"
+              type="email"
+              onChange={handleChange}
+              value={values.email || ''}
+            />
+          </Form.Field>
+          {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
+          <Form.Field>
+            <label htmlFor="password">Password</label>
+            <Input
+              id="password"
+              fluid
+              name="password"
+              type="password"
+              onChange={handleChange}
+              value={values.password || ''}
+            />
+          </Form.Field>
+          {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
+          <Button type="submit" color="orange">
+            Register
+          </Button>
+        </Segment>
+      </Form>
+    </Layout>
+  )
+}
 
-              <Form
-                onSubmit={e => this._handleSubmit(e, context)}
-                loading={loading}
-                error={!!errors}
-              >
-                {errors ? this.handleErrors(errors) : null}
-                <Segment>
-                  <Form.Field>
-                    <label htmlFor="name">Name</label>
-                    <Input
-                      id="name"
-                      fluid
-                      name="name"
-                      autoFocus
-                      required
-                      onChange={e => this._handleChange(e)}
-                    />
-                  </Form.Field>
+export default Register
 
-                  <Form.Field>
-                    <label htmlFor="email">Email</label>
-                    <Input
-                      id="email"
-                      fluid
-                      name="email"
-                      type="email"
-                      required
-                      onChange={e => this._handleChange(e)}
-                    />
-                  </Form.Field>
-
-                  <Form.Field>
-                    <label htmlFor="password">Password</label>
-                    <Input
-                      id="password"
-                      fluid
-                      name="password"
-                      type="password"
-                      required
-                      onChange={e => this._handleChange(e)}
-                    />
-                  </Form.Field>
-
-                  <Button type="submit" color="orange">
-                    Register
-                  </Button>
-                </Segment>
-              </Form>
-            </React.Fragment>
-          )}
-        </AuthContext.Consumer>
-      </Layout>
-    )
+const validate = values => {
+  const errors = {}
+  if (!values.email) {
+    errors.email = 'Email address is required'
+  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+    errors.email = 'Email address is invalid'
   }
+  if (!values.password) {
+    errors.password = 'Password is required'
+  }
+  if (!values.name) {
+    errors.name = 'A name is required'
+  }
+  return errors
 }
