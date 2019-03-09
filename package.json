@@ -33,11 +33,14 @@
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "babel-plugin-styled-components": "^1.10.0",
+    "cypress": "^3.1.5",
+    "cypress-testing-library": "^2.3.6",
     "dotenv": "^6.2.0",
     "eslint": "^5.15.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-loader": "^2.1.2",
+    "eslint-plugin-cypress": "^2.2.1",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
@@ -66,7 +69,7 @@
     "develop": "rm -rf .cache && gatsby develop",
     "build": "rm -rf .cache && gatsby build",
     "deploy": "rm -rf .cache && gatsby build --prefix-paths && gh-pages -d public",
-    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix gatsby-node.js"
+    "cy:open": "cypress open"
   },
   "husky": {
     "hooks": {
