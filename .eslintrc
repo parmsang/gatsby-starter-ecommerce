@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest/globals": true
   },
   "extends": ["airbnb", "prettier"],
   "parser": "babel-eslint",
@@ -12,7 +13,7 @@
     },
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier"],
+  "plugins": ["react", "prettier", "jest"],
   "rules": {
     "prettier/prettier": "error",
     "import/no-extraneous-dependencies": "off",

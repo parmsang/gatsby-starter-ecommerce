@@ -9,6 +9,9 @@
   "dependencies": {
     "@moltin/gatsby-source-moltin": "^1.2.1",
     "@moltin/sdk": "^3.18.2",
+    "babel-jest": "^24.3.1",
+    "babel-preset-gatsby": "^0.1.8",
+    "eslint-plugin-jest": "^22.3.0",
     "gatsby": "^2.1.19",
     "gatsby-image": "^2.0.30",
     "gatsby-plugin-google-analytics": "^2.0.15",
@@ -20,6 +23,7 @@
     "gatsby-plugin-styled-components": "^3.0.6",
     "gatsby-source-filesystem": "^2.0.23",
     "gatsby-transformer-sharp": "^2.1.15",
+    "is-ci-cli": "^1.1.1",
     "lodash": "^4.17.5",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
@@ -36,7 +40,7 @@
     "cypress": "^3.1.5",
     "cypress-testing-library": "^2.3.6",
     "dotenv": "^6.2.0",
-    "eslint": "^5.15.0",
+    "eslint": "^5.15.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-loader": "^2.1.2",
@@ -47,8 +51,11 @@
     "eslint-plugin-react": "^7.12.4",
     "gh-pages": "^2.0.1",
     "husky": "^1.3.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.3.1",
     "lint-staged": "^8.1.5",
     "prettier": "^1.16.4",
+    "react-testing-library": "^6.0.0",
     "regenerator-runtime": "^0.13.1"
   },
   "homepage": "https://github.com/parmsang/gatsby-starter-ecommerce",
@@ -64,12 +71,15 @@
   "scripts": {
     "dev": "gatsby develop",
     "lint": "eslint **/*.{js,jsx} --quiet",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "develop": "rm -rf .cache && gatsby develop",
     "build": "rm -rf .cache && gatsby build",
     "deploy": "rm -rf .cache && gatsby build --prefix-paths && gh-pages -d public",
-    "cy:open": "cypress open"
+    "cy:open": "cypress open",
+    "test": "is-ci \"test:coverage\" \"test:watch\"",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch"
   },
   "husky": {
     "hooks": {
