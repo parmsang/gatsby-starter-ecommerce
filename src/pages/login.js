@@ -1,4 +1,7 @@
-import React from 'react'
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-use-before-define */
+
+import React, { useState, useContext } from 'react'
 import { navigate } from 'gatsby'
 import {
   Header,
@@ -12,45 +15,33 @@ import Helmet from 'react-helmet'
 import { login } from '../../lib/moltin'
 import AuthContext from '../components/Context/AuthContext'
 import Layout from '../components/Layout'
+import useForm from '../components/Hooks/useForm'
 
-export default class Login extends React.Component {
-  state = {
-    email: '',
-    password: '',
-    loading: false,
-    errors: null,
-  }
+const LoginForm = () => {
+  const [loading, setLoading] = useState(false)
+  const [apiError, setApiError] = useState([])
+  const { updateToken } = useContext(AuthContext)
 
-  _handleSubmit = (e, context) => {
-    e.preventDefault()
-
-    const { email, password } = this.state
-
-    this.setState({
-      loading: true,
-      errors: null,
-    })
-
-    login({ email, password })
+  const formLogin = () => {
+    setLoading(true)
+    login({ email: values.email, password: values.password })
       .then(({ id, token }) => {
         localStorage.setItem('customerToken', token)
         localStorage.setItem('mcustomer', id)
-        context.updateToken()
+        updateToken()
         navigate('/myaccount/')
       })
       .catch(e => {
-        console.log(e.message)
-        this.setState({
-          loading: false,
-          errors: e.errors || e,
-        })
+        setLoading(false)
+        setApiError(e.errors || e)
       })
   }
+  const { values, handleChange, handleSubmit, errors } = useForm(
+    formLogin,
+    validate
+  )
 
-  _handleChange = ({ target: { name, value } }) =>
-    this.setState({ [name]: value })
-
-  handleErrors = errors => {
+  const handleErrors = errors => {
     if (!Array.isArray(errors) && !errors.length > 0) {
       return (
         <Message
@@ -60,63 +51,68 @@ export default class Login extends React.Component {
         />
       )
     }
-    return errors.map((error, i) => (
-      <Message error header={error.title} content={error.detail} key={i} />
+    return errors.map(e => (
+      <Message error header={e.title} content={e.detail} key={e.status} />
     ))
   }
+  return (
+    <Form
+      onSubmit={handleSubmit}
+      loading={loading}
+      error={apiError.length !== 0 || Object.entries(errors).length !== 0}
+    >
+      {apiError.length !== 0 ? handleErrors(errors) : null}
+      <Segment>
+        <Form.Field>
+          <label htmlFor="email">Email</label>
+          <Input
+            id="email"
+            fluid
+            name="email"
+            type="email"
+            autoFocus
+            onChange={handleChange}
+            value={values.email || ''}
+          />
+        </Form.Field>
+        {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
+        <Form.Field>
+          <label htmlFor="password">Password</label>
+          <Input
+            id="password"
+            fluid
+            name="password"
+            type="password"
+            value={values.password || ''}
+            onChange={handleChange}
+          />
+        </Form.Field>
+        {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
+        <Button type="submit" color="orange">
+          Login
+        </Button>
+      </Segment>
+    </Form>
+  )
+}
 
-  render() {
-    const { loading, errors } = this.state
+export default ({ location }) => (
+  <Layout location={location}>
+    <Helmet title="Login" />
+    <Header as="h1">Log in to your account</Header>
+    <LoginForm />
+  </Layout>
+)
 
-    return (
-      <Layout location={this.props.location}>
-        <AuthContext.Consumer>
-          {context => (
-            <React.Fragment>
-              <Helmet title="Login" />
-              <Header as="h1">Log in to your account</Header>
-
-              <Form
-                onSubmit={e => this._handleSubmit(e, context)}
-                loading={loading}
-                error={!!errors}
-              >
-                {errors ? this.handleErrors(errors) : null}
-                <Segment>
-                  <Form.Field>
-                    <label htmlFor="email">Email</label>
-                    <Input
-                      id="email"
-                      fluid
-                      name="email"
-                      type="email"
-                      autoFocus
-                      onChange={e => this._handleChange(e)}
-                      required
-                    />
-                  </Form.Field>
-
-                  <Form.Field>
-                    <label htmlFor="password">Password</label>
-                    <Input
-                      id="password"
-                      fluid
-                      name="password"
-                      type="password"
-                      required
-                      onChange={e => this._handleChange(e)}
-                    />
-                  </Form.Field>
-
-                  <Button type="submit" color="orange">
-                    Login
-                  </Button>
-                </Segment>
-              </Form>
-            </React.Fragment>
-          )}
-        </AuthContext.Consumer>
-      </Layout>
-    )
+const validate = values => {
+  const errors = {}
+  if (!values.email) {
+    errors.email = 'Email address is required'
+  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+    errors.email = 'Email address is invalid'
   }
+  if (!values.password) {
+    errors.password = 'Password is required'
+  }
+  return errors
 }
