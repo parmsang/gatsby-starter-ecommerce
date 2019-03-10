@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 import React from 'react'
-import { Link } from 'gatsby'
-import { Header, Loader, Message, Label, Segment } from 'semantic-ui-react'
+import {Link} from 'gatsby'
+import {Header, Loader, Message, Label, Segment} from 'semantic-ui-react'
 
-export default ({ orders, loading }) => {
+export default ({orders, loading}) => {
   if (loading) return <Loader active inline="centered" />
 
   if (orders.length === 0) {

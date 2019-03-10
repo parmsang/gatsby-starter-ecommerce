@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useState, useContext, useEffect } from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import SEO from '../components/SEO'
 import CartItemList from '../components/CartItemList'
 import CartSummary from '../components/CartSummary'
@@ -8,17 +8,17 @@ import Layout from '../components/Layout'
 
 const Moltin = require('../../lib/moltin')
 
-const Cart = ({ location }) => {
+const Cart = ({location}) => {
   const [loading, setLoading] = useState(true)
   const [items, setItems] = useState([])
   const [completed, setCompleted] = useState(false)
   const [meta, setMeta] = useState({})
   const [cartId, setCartId] = useState({})
-  const { updateCartCount } = useContext(CartContext)
+  const {updateCartCount} = useContext(CartContext)
 
   async function getCartItems() {
     const cartIdLocal = localStorage.getItem('mcart')
-    await Moltin.getCartItems(cartIdLocal).then(({ data, meta }) => {
+    await Moltin.getCartItems(cartIdLocal).then(({data, meta}) => {
       setItems(data)
       setMeta(meta)
       setCartId(cartIdLocal)
@@ -46,7 +46,7 @@ const Cart = ({ location }) => {
       },
     } = data
 
-    const customer = { name, email } // token ? customerId : { name, email };
+    const customer = {name, email} // token ? customerId : { name, email };
 
     const address = {
       first_name: name.split(' ')[0],
@@ -59,7 +59,7 @@ const Cart = ({ location }) => {
     }
 
     Moltin.checkoutCart(cartId, customer, address)
-      .then(({ data: { id } }) => {
+      .then(({data: {id}}) => {
         Moltin.payForOrder(id, token, email)
         setCompleted(true)
       })
@@ -69,7 +69,7 @@ const Cart = ({ location }) => {
   }
 
   const handleRemoveFromCart = itemId => {
-    Moltin.removeFromCart(itemId, cartId).then(({ data, meta }) => {
+    Moltin.removeFromCart(itemId, cartId).then(({data, meta}) => {
       const total = data.reduce((a, c) => a + c.quantity, 0)
       updateCartCount(total, cartId)
       setItems(data)
@@ -77,7 +77,7 @@ const Cart = ({ location }) => {
     })
   }
 
-  const rest = { completed, items, loading, cartId }
+  const rest = {completed, items, loading, cartId}
 
   return (
     <Layout location={location}>

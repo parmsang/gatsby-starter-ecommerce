@@ -3,10 +3,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import { useStaticQuery, graphql, withPrefix } from 'gatsby'
+import {useStaticQuery, graphql, withPrefix} from 'gatsby'
 
-function SEO({ description, lang, meta, keywords, title }) {
-  const { site } = useStaticQuery(
+function SEO({description, lang, meta, keywords, title}) {
+  const {site} = useStaticQuery(
     graphql`
       query {
         site {
@@ -17,7 +17,7 @@ function SEO({ description, lang, meta, keywords, title }) {
           }
         }
       }
-    `
+    `,
   )
 
   const metaDescription = description || site.siteMetadata.description
@@ -62,8 +62,8 @@ function SEO({ description, lang, meta, keywords, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
-        { name: 'msapplication-TileColor', content: '#da532c' },
-        { name: 'theme-color', content: '#ffffff' },
+        {name: 'msapplication-TileColor', content: '#da532c'},
+        {name: 'theme-color', content: '#ffffff'},
       ]
         .concat(
           keywords.length > 0
@@ -71,7 +71,7 @@ function SEO({ description, lang, meta, keywords, title }) {
                 name: `keywords`,
                 content: keywords.join(`, `),
               }
-            : []
+            : [],
         )
         .concat(meta)}
     >

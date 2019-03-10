@@ -1,15 +1,15 @@
-import React, { useState, useContext } from 'react'
-import { Input, Icon, Transition } from 'semantic-ui-react'
+import React, {useState, useContext} from 'react'
+import {Input, Icon, Transition} from 'semantic-ui-react'
 import CartContext from '../Context/CartContext'
 
 const Moltin = require('../../../lib/moltin')
 
-const AddToCart = ({ productId }) => {
+const AddToCart = ({productId}) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [quantity, setQuantity] = useState(1)
   const [visible, setVisible] = useState(false)
-  const { addToCart } = useContext(CartContext)
+  const {addToCart} = useContext(CartContext)
 
   const toggleMessage = () => {
     setTimeout(() => {
@@ -49,7 +49,7 @@ const AddToCart = ({ productId }) => {
     }
   }
 
-  const handleChange = ({ target: { value } }) => setQuantity(value)
+  const handleChange = ({target: {value}}) => setQuantity(value)
 
   return (
     <>
@@ -70,11 +70,9 @@ const AddToCart = ({ productId }) => {
           disabled: loading,
         }}
       />
-      {error && (
-        <div style={{ color: 'red', position: 'absolute' }}>{error}</div>
-      )}
-      <Transition duration={{ hide: 500, show: 500 }} visible={visible}>
-        <div style={{ color: 'green', position: 'absolute' }}>
+      {error && <div style={{color: 'red', position: 'absolute'}}>{error}</div>}
+      <Transition duration={{hide: 500, show: 500}} visible={visible}>
+        <div style={{color: 'green', position: 'absolute'}}>
           <Icon name="check" />
           Added to cart
         </div>

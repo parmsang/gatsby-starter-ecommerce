@@ -1,26 +1,19 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-use-before-define */
 
-import React, { useState, useContext } from 'react'
-import { navigate } from 'gatsby'
-import {
-  Header,
-  Form,
-  Input,
-  Button,
-  Segment,
-  Message,
-} from 'semantic-ui-react'
+import React, {useState, useContext} from 'react'
+import {navigate} from 'gatsby'
+import {Header, Form, Input, Button, Segment, Message} from 'semantic-ui-react'
 import SEO from '../components/SEO'
 import AuthContext from '../components/Context/AuthContext'
-import { register } from '../../lib/moltin'
+import {register} from '../../lib/moltin'
 import Layout from '../components/Layout'
 import useForm from '../components/Hooks/useForm'
 
-const Register = ({ location }) => {
+const Register = ({location}) => {
   const [loading, setLoading] = useState(false)
   const [apiError, setApiError] = useState([])
-  const { updateToken } = useContext(AuthContext)
+  const {updateToken} = useContext(AuthContext)
 
   const formRegister = () => {
     setLoading(true)
@@ -30,7 +23,7 @@ const Register = ({ location }) => {
       password: values.password,
     })
       .then(data => {
-        const { id, token } = data
+        const {id, token} = data
         localStorage.setItem('customerToken', token)
         localStorage.setItem('mcustomer', id)
         updateToken()
@@ -43,9 +36,9 @@ const Register = ({ location }) => {
       })
   }
 
-  const { values, handleChange, handleSubmit, errors } = useForm(
+  const {values, handleChange, handleSubmit, errors} = useForm(
     formRegister,
-    validate
+    validate,
   )
 
   const handleErrors = errors => {
@@ -77,7 +70,7 @@ const Register = ({ location }) => {
               value={values.name || ''}
             />
           </Form.Field>
-          {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
+          {errors.name && <p style={{color: 'red'}}>{errors.name}</p>}
 
           <Form.Field>
             <label htmlFor="email">Email</label>
@@ -90,7 +83,7 @@ const Register = ({ location }) => {
               value={values.email || ''}
             />
           </Form.Field>
-          {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
+          {errors.email && <p style={{color: 'red'}}>{errors.email}</p>}
           <Form.Field>
             <label htmlFor="password">Password</label>
             <Input
@@ -102,7 +95,7 @@ const Register = ({ location }) => {
               value={values.password || ''}
             />
           </Form.Field>
-          {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
+          {errors.password && <p style={{color: 'red'}}>{errors.password}</p>}
           <Button type="submit" color="orange">
             Register
           </Button>

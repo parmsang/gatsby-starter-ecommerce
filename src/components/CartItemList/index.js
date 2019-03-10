@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 import React from 'react'
-import { Link } from 'gatsby'
-import { Item, Button, Loader, Message, Responsive } from 'semantic-ui-react'
+import {Link} from 'gatsby'
+import {Item, Button, Loader, Message, Responsive} from 'semantic-ui-react'
 
-export default ({ items, removeFromCart, loading, completed }) => {
+export default ({items, removeFromCart, loading, completed}) => {
   if (loading) return <Loader active inline="centered" />
 
   if (completed)
@@ -24,7 +24,7 @@ export default ({ items, removeFromCart, loading, completed }) => {
       </Message>
     )
   const mapCartItemsToItems = items =>
-    items.map(({ id, product_id, name, quantity, meta, image }) => {
+    items.map(({id, product_id, name, quantity, meta, image}) => {
       const price = meta.display_price.with_tax.unit.formatted || ''
       const imageUrl = image.href || '/static/moltin-light-hex.svg'
 
@@ -33,7 +33,7 @@ export default ({ items, removeFromCart, loading, completed }) => {
           src={imageUrl}
           alt={name}
           size="small"
-          style={{ background: '#f2f2f2' }}
+          style={{background: '#f2f2f2'}}
         />
       )
       const MobileItemImage = () => (
@@ -41,7 +41,7 @@ export default ({ items, removeFromCart, loading, completed }) => {
           src={imageUrl}
           alt={name}
           size="small"
-          style={{ background: 'none' }}
+          style={{background: 'none'}}
         />
       )
 

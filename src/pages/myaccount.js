@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { navigate } from 'gatsby'
+import React, {useState, useEffect} from 'react'
+import {navigate} from 'gatsby'
 import SEO from '../components/SEO'
 import OrderItemList from '../components/OrderItemList'
 import Layout from '../components/Layout'
 
-import { getOrders } from '../../lib/moltin'
+import {getOrders} from '../../lib/moltin'
 
-const MyAccount = ({ location }) => {
+const MyAccount = ({location}) => {
   const [loading, setLoading] = useState(false)
   const [orders, setOrders] = useState([])
   const [meta, setMeta] = useState({})
@@ -17,13 +17,13 @@ const MyAccount = ({ location }) => {
       navigate('/login/')
     }
     getOrders(token)
-      .then(({ data, meta }) => {
+      .then(({data, meta}) => {
         const orders = data.map(order =>
           // const orderItems = order.relationships.items.data
           // const includedItems = included.items.map(i => i.id === )
           ({
             ...order,
-          })
+          }),
         )
         setLoading(false)
         setMeta(meta)

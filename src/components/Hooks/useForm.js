@@ -1,6 +1,6 @@
 // Credit to https://upmostly.com/tutorials/using-custom-react-hooks-simplify-forms/
 
-import { useState, useEffect } from 'react'
+import {useState, useEffect} from 'react'
 
 const useForm = (callback, validate) => {
   const [values, setValues] = useState({})

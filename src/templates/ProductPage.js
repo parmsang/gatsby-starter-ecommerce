@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react'
-import { graphql } from 'gatsby'
+import {graphql} from 'gatsby'
 import SEO from '../components/SEO'
 import get from 'lodash/get'
 import ProductSummary from '../components/ProductSummary'
@@ -40,7 +40,7 @@ export default ProductPageTemplate
 
 export const pageQuery = graphql`
   query ProductsQuery($id: String!) {
-    allMoltinProduct(filter: { id: { eq: $id } }) {
+    allMoltinProduct(filter: {id: {eq: $id}}) {
       edges {
         node {
           id

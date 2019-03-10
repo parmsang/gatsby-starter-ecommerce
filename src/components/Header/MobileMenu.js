@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Link, withPrefix } from 'gatsby'
+import React, {useState, useEffect} from 'react'
+import {Link, withPrefix} from 'gatsby'
 import {
   Menu,
   Container,
@@ -67,7 +67,7 @@ const StyledDivider = styled(Divider)`
   }
 `
 
-const MobileMenu = ({ location: { pathname }, token, cartCount }) => {
+const MobileMenu = ({location: {pathname}, token, cartCount}) => {
   const [activeItem, setActiveItem] = useState(pathname)
   const [open, setOpen] = useState(false)
 
