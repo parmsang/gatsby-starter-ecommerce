@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, withPrefix } from 'gatsby'
 import {
   Menu,
@@ -67,108 +67,90 @@ const StyledDivider = styled(Divider)`
   }
 `
 
-class MobileMenu extends Component {
-  state = {
-    open: false,
-    activeItem: this.props.location.pathname,
-  }
+const MobileMenu = ({ location: { pathname }, token, cartCount }) => {
+  const [activeItem, setActiveItem] = useState(pathname)
+  const [open, setOpen] = useState(false)
 
-  componentWillReceiveProps(nextProps) {
-    const nextPathname = nextProps.location.pathname
-    const currentPathname = this.props.location.pathname
+  useEffect(() => {
+    setActiveItem(pathname)
+  }, [pathname])
 
-    if (nextPathname !== currentPathname) {
-      this.setState({
-        activeItem: nextPathname,
-      })
-    }
-  }
+  const handleClick = () => setOpen(!open)
 
-  handleClick = () => this.setState({ open: !this.state.open })
+  const handleClose = () => setOpen(false)
 
-  handleClose = () => this.setState({ open: false })
-
-  render() {
-    const { open, activeItem } = this.state
-    const { token, cartCount } = this.props
-
-    return (
-      <Menu size="huge" borderless pointing>
-        <Container text>
+  return (
+    <Menu size="huge" borderless pointing>
+      <Container text>
+        <Menu.Item
+          as={Link}
+          to="/"
+          header
+          active={activeItem === withPrefix('/')}
+        >
+          <Logo />
+          Store
+        </Menu.Item>
+        <Menu.Menu position="right">
           <Menu.Item
             as={Link}
-            to="/"
-            header
-            active={activeItem === withPrefix('/')}
+            to="/cart/"
+            active={activeItem === withPrefix('/cart/')}
           >
-            <Logo />
-            Store
+            <ShoppingCartIcon cartCount={cartCount} name="" />
           </Menu.Item>
-          <Menu.Menu position="right">
-            <Menu.Item
-              as={Link}
-              to="/cart/"
-              active={activeItem === withPrefix('/cart/')}
+          <Menu.Item position="right">
+            <BurgerButton
+              basic
+              onClick={handleClick}
+              aria-label="Open Navigation Menu"
+              autoFocus
             >
-              <ShoppingCartIcon cartCount={cartCount} name="" />
-            </Menu.Item>
-            <Menu.Item position="right">
-              <BurgerButton
+              <Icon fitted name="bars" />
+            </BurgerButton>
+          </Menu.Item>
+        </Menu.Menu>
+        <Portal closeOnEscape onClose={handleClose} open={open}>
+          <StyledSegment className role="dialog" aria-label="Navigation Menu">
+            <StyledContainer>
+              <CloseButton
+                aria-label="Close Navigation"
                 basic
-                onClick={this.handleClick}
-                aria-label="Open Navigation Menu"
+                circular
+                onClick={handleClose}
                 autoFocus
               >
-                <Icon fitted name="bars" />
-              </BurgerButton>
-            </Menu.Item>
-          </Menu.Menu>
-          <Portal closeOnEscape onClose={this.handleClose} open={open}>
-            <StyledSegment className role="dialog" aria-label="Navigation Menu">
-              <StyledContainer>
-                <CloseButton
-                  aria-label="Close Navigation"
-                  basic
-                  circular
-                  onClick={this.handleClose}
-                  autoFocus
-                >
-                  X
-                </CloseButton>
-                <StyledLink to="/" onClick={this.handleClose}>
-                  Home
+                X
+              </CloseButton>
+              <StyledLink to="/" onClick={handleClose}>
+                Home
+              </StyledLink>
+              <StyledDivider />
+              <StyledLink to="/cart/" onClick={handleClose}>
+                {`Shopping Cart ${cartCount ? `(${cartCount})` : ''}`}
+              </StyledLink>
+              <StyledDivider />
+              {token ? (
+                <StyledLink to="/myaccount/" onClick={handleClose}>
+                  My Account
                 </StyledLink>
-                <StyledDivider />
-                <StyledLink to="/cart/" onClick={this.handleClose}>
-                  {`Shopping Cart ${cartCount ? `(${cartCount})` : ''}`}
-                </StyledLink>
-                <StyledDivider />
-                {token ? (
-                  <StyledLink to="/myaccount/" onClick={this.handleClose}>
-                    My Account
-                  </StyledLink>
-                ) : (
-                  [
-                    <StyledLink
-                      to="/register/"
-                      onClick={this.handleClose}
-                      key={1}
-                    >
-                      Sign Up
-                    </StyledLink>,
-                    <StyledDivider key={2} />,
-                    <StyledLink to="/login/" onClick={this.handleClose} key={3}>
-                      Sign In
-                    </StyledLink>,
-                  ]
-                )}
-              </StyledContainer>
-            </StyledSegment>
-          </Portal>
-        </Container>
-      </Menu>
-    )
-  }
+              ) : (
+                [
+                  <StyledLink to="/register/" onClick={handleClose} key={1}>
+                    Sign Up
+                  </StyledLink>,
+                  <StyledDivider key={2} />,
+                  <StyledLink to="/login/" onClick={handleClose} key={3}>
+                    Sign In
+                  </StyledLink>,
+                ]
+              )}
+            </StyledContainer>
+          </StyledSegment>
+        </Portal>
+      </Container>
+    </Menu>
+  )
 }
 
 export default MobileMenu
