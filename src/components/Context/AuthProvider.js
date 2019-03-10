@@ -6,6 +6,11 @@ const AuthProvider = ({children}) => {
 
   const updateToken = () => setToken(localStorage.getItem('customerToken'))
 
+  const signOut = () => {
+    localStorage.removeItem('customerToken')
+    setToken('')
+  }
+
   useEffect(() => {
     const token = localStorage.getItem('customerToken')
     setToken(token)
@@ -16,6 +21,7 @@ const AuthProvider = ({children}) => {
       value={{
         token,
         updateToken,
+        signOut,
       }}
     >
       {children}

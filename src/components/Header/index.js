@@ -7,15 +7,25 @@ import CartContext from '../Context/CartContext'
 
 const Header = ({location}) => {
   const {cartCount} = useContext(CartContext)
-  const {token} = useContext(AuthContext)
+  const {token, signOut} = useContext(AuthContext)
 
   return (
     <>
       <Responsive maxWidth={Responsive.onlyMobile.maxWidth}>
-        <MobileMenu location={location} token={token} cartCount={cartCount} />
+        <MobileMenu
+          location={location}
+          token={token}
+          cartCount={cartCount}
+          signout={signOut}
+        />
       </Responsive>
       <Responsive minWidth={Responsive.onlyTablet.minWidth}>
-        <DesktopMenu location={location} token={token} cartCount={cartCount} />
+        <DesktopMenu
+          location={location}
+          token={token}
+          cartCount={cartCount}
+          signout={signOut}
+        />
       </Responsive>
     </>
   )

@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import {navigate} from 'gatsby'
 import SEO from '../components/SEO'
 import OrderItemList from '../components/OrderItemList'
 import Layout from '../components/Layout'
+import AuthContext from '../components/Context/AuthContext'
 
 import {getOrders} from '../../lib/moltin'
 
@@ -10,21 +11,17 @@ const MyAccount = ({location}) => {
   const [loading, setLoading] = useState(false)
   const [orders, setOrders] = useState([])
   const [meta, setMeta] = useState({})
+  const {token} = useContext(AuthContext)
 
   useEffect(() => {
-    const token = localStorage.getItem('customerToken')
     if (!token) {
       navigate('/login/')
     }
     getOrders(token)
       .then(({data, meta}) => {
-        const orders = data.map(order =>
-          // const orderItems = order.relationships.items.data
-          // const includedItems = included.items.map(i => i.id === )
-          ({
-            ...order,
-          }),
-        )
+        const orders = data.map(order => ({
+          ...order,
+        }))
         setLoading(false)
         setMeta(meta)
         setOrders(orders)
@@ -32,7 +29,7 @@ const MyAccount = ({location}) => {
       .catch(error => {
         console.log(error)
       })
-  }, [])
+  }, [token])
 
   return (
     <Layout location={location}>

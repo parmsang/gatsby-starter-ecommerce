@@ -4,7 +4,7 @@ import {Menu, Container, Icon} from 'semantic-ui-react'
 import ShoppingCartIcon from './ShoppingCartIcon'
 import Logo from './Logo'
 
-const DesktopMenu = ({location: {pathname}, token, cartCount}) => {
+const DesktopMenu = ({location: {pathname}, token, cartCount, signout}) => {
   const [activeItem, setActiveItem] = useState(pathname)
 
   useEffect(() => {
@@ -33,6 +33,7 @@ const DesktopMenu = ({location: {pathname}, token, cartCount}) => {
               <Icon name="user" />
               My Account
             </Menu.Item>
+            <Menu.Item onClick={signout}>Sign out</Menu.Item>
             <Menu.Item
               as={Link}
               to="/cart/"

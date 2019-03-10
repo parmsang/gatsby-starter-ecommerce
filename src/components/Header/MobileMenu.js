@@ -67,7 +67,7 @@ const StyledDivider = styled(Divider)`
   }
 `
 
-const MobileMenu = ({location: {pathname}, token, cartCount}) => {
+const MobileMenu = ({location: {pathname}, token, cartCount, signout}) => {
   const [activeItem, setActiveItem] = useState(pathname)
   const [open, setOpen] = useState(false)
 
@@ -130,21 +130,25 @@ const MobileMenu = ({location: {pathname}, token, cartCount}) => {
                 {`Shopping Cart ${cartCount ? `(${cartCount})` : ''}`}
               </StyledLink>
               <StyledDivider />
-              {token ? (
-                <StyledLink to="/myaccount/" onClick={handleClose}>
-                  My Account
-                </StyledLink>
-              ) : (
-                [
-                  <StyledLink to="/register/" onClick={handleClose} key={1}>
-                    Sign Up
-                  </StyledLink>,
-                  <StyledDivider key={2} />,
-                  <StyledLink to="/login/" onClick={handleClose} key={3}>
-                    Sign In
-                  </StyledLink>,
-                ]
-              )}
+              {token
+                ? [
+                    <StyledLink to="/myaccount/" onClick={handleClose} key={1}>
+                      My Account
+                    </StyledLink>,
+                    <StyledDivider key={2} />,
+                    <StyledLink to="/" onClick={signout} key={3}>
+                      Sign out
+                    </StyledLink>,
+                  ]
+                : [
+                    <StyledLink to="/register/" onClick={handleClose} key={1}>
+                      Sign Up
+                    </StyledLink>,
+                    <StyledDivider key={2} />,
+                    <StyledLink to="/login/" onClick={handleClose} key={3}>
+                      Sign In
+                    </StyledLink>,
+                  ]}
             </StyledContainer>
           </StyledSegment>
         </Portal>
