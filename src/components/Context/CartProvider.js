@@ -36,7 +36,6 @@ const CartProvider = ({ children }) => {
     } else {
       const data = localStorage.getItem('mdata')
       const parsedData = JSON.parse(data)
-      console.log(data)
       setCartCount(parsedData.cartCount || 0)
     }
   }, [])
