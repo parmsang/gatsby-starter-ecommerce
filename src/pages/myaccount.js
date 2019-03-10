@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { navigate } from 'gatsby'
 import Helmet from 'react-helmet'
 import OrderItemList from '../components/OrderItemList'
@@ -6,47 +6,39 @@ import Layout from '../components/Layout'
 
 import { getOrders } from '../../lib/moltin'
 
-export default class MyAccount extends React.Component {
-  state = {
-    loading: true,
-    orders: [],
-  }
+const MyAccount = ({ location }) => {
+  const [loading, setLoading] = useState(false)
+  const [orders, setOrders] = useState([])
+  const [meta, setMeta] = useState({})
 
-  componentDidMount() {
+  useEffect(() => {
     const token = localStorage.getItem('customerToken')
-
     if (!token) {
       navigate('/login/')
     }
     getOrders(token)
-      .then(({ data, included, meta }) => {
+      .then(({ data, meta }) => {
         const orders = data.map(order =>
           // const orderItems = order.relationships.items.data
           // const includedItems = included.items.map(i => i.id === )
-
           ({
             ...order,
           })
         )
-
-        this.setState({
-          loading: false,
-          orders,
-          included,
-          meta,
-        })
+        setLoading(false)
+        setMeta(meta)
+        setOrders(orders)
       })
       .catch(error => {
         console.log(error)
       })
-  }
+  }, [])
 
-  render() {
-    return (
-      <Layout location={this.props.location}>
-        <Helmet title="My Account" />
-        <OrderItemList {...this.state} />
-      </Layout>
-    )
-  }
+  return (
+    <Layout location={location}>
+      <Helmet title="My Account" />
+      <OrderItemList meta={meta} orders={orders} loading={loading} />
+    </Layout>
+  )
 }
+export default MyAccount

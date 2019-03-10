@@ -11,7 +11,10 @@ export default ({
   <div>
     <Divider />
     <Segment clearing size="large">
-      <strong>Sub total:</strong> {formatted}
+      <span>
+        <strong>Sub total:</strong>
+        {` ${formatted}`}
+      </span>
       <StripeCheckout
         name="Gatsby Store"
         amount={amount}
