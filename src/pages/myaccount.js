@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { navigate } from 'gatsby'
-import Helmet from 'react-helmet'
+import SEO from '../components/SEO'
 import OrderItemList from '../components/OrderItemList'
 import Layout from '../components/Layout'
 
@@ -36,7 +36,7 @@ const MyAccount = ({ location }) => {
 
   return (
     <Layout location={location}>
-      <Helmet title="My Account" />
+      <SEO title="My Account" />
       <OrderItemList meta={meta} orders={orders} loading={loading} />
     </Layout>
   )

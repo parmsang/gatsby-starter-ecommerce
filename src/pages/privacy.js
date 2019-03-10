@@ -1,10 +1,10 @@
 import React from 'react'
-import Helmet from 'react-helmet'
+import SEO from '../components/SEO'
 import Layout from '../components/Layout'
 
 const Privacy = ({ location }) => (
   <Layout location={location}>
-    <Helmet title="Privacy" />
+    <SEO title="Privacy" />
     <h1>Privacy</h1>
     <p>
       Lorem ipsizzle dolizzle sit amizzle, fo shizzle my nizzle adipiscing

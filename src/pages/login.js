@@ -11,7 +11,7 @@ import {
   Segment,
   Message,
 } from 'semantic-ui-react'
-import Helmet from 'react-helmet'
+import SEO from '../components/SEO'
 import { login } from '../../lib/moltin'
 import AuthContext from '../components/Context/AuthContext'
 import Layout from '../components/Layout'
@@ -57,7 +57,7 @@ const LoginPage = ({ location }) => {
   }
   return (
     <Layout location={location}>
-      <Helmet title="Login" />
+      <SEO title="Login" />
       <Header as="h1">Log in to your account</Header>
       <Form
         onSubmit={handleSubmit}

@@ -2,8 +2,8 @@ import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import get from 'lodash/get'
 import { Image, Header } from 'semantic-ui-react'
-import Helmet from 'react-helmet'
 import ProductList from '../components/ProductList'
+import SEO from '../components/SEO'
 import logo from '../images/ill-short-dark.svg'
 import Layout from '../components/Layout'
 
@@ -51,7 +51,7 @@ const StoreIndex = ({ location }) => {
   const filterProductsWithoutImages = products.filter(v => v.node.mainImageHref)
   return (
     <Layout location={location}>
-      <Helmet title={siteTitle} />
+      <SEO title={siteTitle} />
       <Header
         as="h3"
         icon

@@ -11,7 +11,7 @@ import {
   Segment,
   Message,
 } from 'semantic-ui-react'
-import Helmet from 'react-helmet'
+import SEO from '../components/SEO'
 import AuthContext from '../components/Context/AuthContext'
 import { register } from '../../lib/moltin'
 import Layout from '../components/Layout'
@@ -61,7 +61,7 @@ const Register = ({ location }) => {
 
   return (
     <Layout location={location}>
-      <Helmet title="Register" />
+      <SEO title="Register" />
       <Header as="h1">Create an account</Header>
       <Form onSubmit={handleSubmit} loading={loading} error={!!errors}>
         {apiError.length !== 0 ? handleErrors(errors) : null}

@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
+import SEO from '../components/SEO'
 import get from 'lodash/get'
 import ProductSummary from '../components/ProductSummary'
 import ProductAttributes from '../components/ProductAttributes'
@@ -28,7 +28,7 @@ class ProductPageTemplate extends React.PureComponent {
 
     return (
       <Layout location={this.props.location}>
-        <Helmet title={slug} />
+        <SEO title={slug} />
         <ProductSummary {...product} />
         <ProductAttributes {...product} />
       </Layout>

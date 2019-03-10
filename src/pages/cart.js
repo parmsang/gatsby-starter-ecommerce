@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React, { useState, useContext, useEffect } from 'react'
-import Helmet from 'react-helmet'
+import SEO from '../components/SEO'
 import CartItemList from '../components/CartItemList'
 import CartSummary from '../components/CartSummary'
 import CartContext from '../components/Context/CartContext'
@@ -81,7 +81,7 @@ const Cart = ({ location }) => {
 
   return (
     <Layout location={location}>
-      <Helmet title="Cart" />
+      <SEO title="Cart" />
       <CartItemList
         {...rest}
         removeFromCart={item => handleRemoveFromCart(item)}
