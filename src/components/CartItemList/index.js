@@ -1,7 +1,7 @@
+/* eslint-disable camelcase */
 import React from 'react'
 import { Link } from 'gatsby'
 import { Item, Button, Loader, Message, Responsive } from 'semantic-ui-react'
-import styled from 'styled-components'
 
 export default ({ items, removeFromCart, loading, completed }) => {
   if (loading) return <Loader active inline="centered" />
@@ -19,7 +19,7 @@ export default ({ items, removeFromCart, loading, completed }) => {
       <Message warning>
         <Message.Header>Your cart is empty</Message.Header>
         <p>
-          You'll need to add some items to the cart before you can checkout.
+          You will need to add some items to the cart before you can checkout.
         </p>
       </Message>
     )

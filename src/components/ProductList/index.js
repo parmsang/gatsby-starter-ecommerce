@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react'
 import { Card, Image, Label } from 'semantic-ui-react'
 import Img from 'gatsby-image'

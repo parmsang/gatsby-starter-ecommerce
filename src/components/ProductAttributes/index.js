@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react'
 import { Header, Divider, Table } from 'semantic-ui-react'
 

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react'
 import { Link } from 'gatsby'
 import { Header, Loader, Message, Label, Segment } from 'semantic-ui-react'
@@ -10,8 +11,8 @@ export default ({ orders, loading }) => {
       <Message warning>
         <Message.Header>No recent orders</Message.Header>
         <p>
-          When you place an order, they will appear here.{' '}
-          <Link to="/">Go shopping</Link>.
+          When you place an order, they will appear here.
+          <Link to="/">Go shopping.</Link>
         </p>
       </Message>
     )
