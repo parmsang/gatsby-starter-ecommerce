@@ -27,8 +27,8 @@ const AddToCart = ({productId}) => {
     return error
   }
 
-  const handleSubmit = () => {
-    const cartId = localStorage.getItem('mcart')
+  const handleSubmit = async () => {
+    const cartId = await localStorage.getItem('mcart')
 
     const error = validate(quantity)
     setError(error)
@@ -38,7 +38,7 @@ const AddToCart = ({productId}) => {
         .then(() => {
           addToCart(quantity, cartId)
           setLoading(false)
-          setQuantity(1)
+          setQuantity(quantity)
           setVisible(true)
           toggleMessage()
         })

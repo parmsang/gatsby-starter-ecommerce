@@ -10,6 +10,7 @@ import {getOrders} from '../../lib/moltin'
 const MyAccount = ({location}) => {
   const [loading, setLoading] = useState(false)
   const [orders, setOrders] = useState([])
+  const [included, setIncluded] = useState([])
   const [meta, setMeta] = useState({})
   const {token} = useContext(AuthContext)
 
@@ -18,13 +19,14 @@ const MyAccount = ({location}) => {
       navigate('/login/')
     }
     getOrders(token)
-      .then(({data, meta}) => {
+      .then(({data, meta, included}) => {
         const orders = data.map(order => ({
           ...order,
         }))
         setLoading(false)
         setMeta(meta)
         setOrders(orders)
+        setIncluded(included)
       })
       .catch(error => {
         console.log(error)
@@ -34,7 +36,12 @@ const MyAccount = ({location}) => {
   return (
     <Layout location={location}>
       <SEO title="My Account" />
-      <OrderItemList meta={meta} orders={orders} loading={loading} />
+      <OrderItemList
+        meta={meta}
+        orders={orders}
+        loading={loading}
+        included={included}
+      />
     </Layout>
   )
 }

@@ -17,11 +17,11 @@ const Cart = ({location}) => {
   const {updateCartCount} = useContext(CartContext)
 
   async function getCartItems() {
-    const cartIdLocal = localStorage.getItem('mcart')
+    const cartIdLocal = await localStorage.getItem('mcart')
     await Moltin.getCartItems(cartIdLocal).then(({data, meta}) => {
       setItems(data)
-      setMeta(meta)
       setCartId(cartIdLocal)
+      setMeta(meta)
       setLoading(false)
     })
   }
@@ -30,8 +30,9 @@ const Cart = ({location}) => {
     getCartItems()
   }, [])
 
-  const handleCheckout = data => {
-    const cartId = localStorage.getItem('mcart')
+  const handleCheckout = async data => {
+    const cartId = await localStorage.getItem('mcart')
+    const customerId = localStorage.getItem('mcustomer')
 
     const {
       id: token,
@@ -46,7 +47,7 @@ const Cart = ({location}) => {
       },
     } = data
 
-    const customer = {name, email} // token ? customerId : { name, email };
+    const customer = customerId || {name, email}
 
     const address = {
       first_name: name.split(' ')[0],
@@ -58,14 +59,15 @@ const Cart = ({location}) => {
       postcode,
     }
 
-    Moltin.checkoutCart(cartId, customer, address)
-      .then(({data: {id}}) => {
-        Moltin.payForOrder(id, token, email)
-        setCompleted(true)
-      })
-      .catch(e => {
-        console.log(e)
-      })
+    try {
+      const {
+        data: {id},
+      } = await Moltin.checkoutCart(cartId, customer, address)
+      await Moltin.payForOrder(id, token, email)
+      setCompleted(true)
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   const handleRemoveFromCart = itemId => {
