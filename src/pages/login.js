@@ -71,7 +71,11 @@ const LoginPage = ({location}) => {
               value={values.email || ''}
             />
           </Form.Field>
-          {errors.email && <p style={{color: 'red'}}>{errors.email}</p>}
+          {errors.email && (
+            <p data-testid="error" style={{color: 'red'}}>
+              {errors.email}
+            </p>
+          )}
           <Form.Field>
             <label htmlFor="password">Password</label>
             <Input

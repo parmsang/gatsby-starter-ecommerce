@@ -1,0 +1,291 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<DocumentFragment>
+  <div
+    class="headroom-wrapper"
+  >
+    <div
+      class="headroom headroom--unfixed"
+      style="position: relative; top: 0px; left: 0px; right: 0px; z-index: 20; transform: translate3D(0, 0, 0); height: 6.5em;"
+    >
+      <div>
+        <div
+          class="ui huge borderless pointing menu"
+        >
+          <div
+            class="ui text container"
+          >
+            <a
+              aria-current="page"
+              class="header item"
+              href="/"
+            >
+              <img
+                alt="I love Lamp"
+                class="ui mini image"
+                src="test-file-stub"
+                style="margin-right: 1.5em;"
+              />
+              Starter Store
+            </a>
+            <div
+              class="right menu"
+            >
+              <a
+                class="item"
+                href="/register/"
+              >
+                Sign up
+              </a>
+              <a
+                class="item"
+                href="/login/"
+              >
+                Sign in
+              </a>
+              <a
+                class="item"
+                href="/cart/"
+              >
+                <div>
+                  <i
+                    aria-hidden="true"
+                    class="cart icon"
+                  />
+                   Cart (0)
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ui text container"
+  >
+    <h1
+      class="ui header"
+    >
+      Create an account
+    </h1>
+    <form
+      class="ui error form"
+    >
+      <div
+        class="ui segment"
+      >
+        <div
+          class="field"
+        >
+          <label
+            for="name"
+          >
+            Name
+          </label>
+          <div
+            class="ui fluid input"
+          >
+            <input
+              id="name"
+              name="name"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="field"
+        >
+          <label
+            for="email"
+          >
+            Email
+          </label>
+          <div
+            class="ui fluid input"
+          >
+            <input
+              id="email"
+              name="email"
+              type="email"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="field"
+        >
+          <label
+            for="password"
+          >
+            Password
+          </label>
+          <div
+            class="ui fluid input"
+          >
+            <input
+              id="password"
+              name="password"
+              type="password"
+              value=""
+            />
+          </div>
+        </div>
+        <button
+          class="ui orange button"
+          type="submit"
+        >
+          Register
+        </button>
+      </div>
+    </form>
+  </div>
+  <div
+    class="ui vertical segment"
+    style="padding: 4em 0em; margin-top: 3em; border-top: 1px solid #f2f2f2;"
+  >
+    <div
+      class="ui text container"
+    >
+      <div
+        class="ui stackable grid"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="four wide column"
+          >
+            <h4
+              class="ui header"
+            >
+              About
+            </h4>
+            <div
+              class="ui list"
+              role="list"
+            >
+              <a
+                class="item"
+                href="/privacy/"
+                role="listitem"
+              >
+                Privacy
+              </a>
+              <a
+                class="item"
+                href="/terms/"
+                role="listitem"
+              >
+                Terms
+              </a>
+            </div>
+          </div>
+          <div
+            class="five wide column"
+          >
+            <h4
+              class="ui header"
+            >
+              Services
+            </h4>
+            <div
+              class="ui list"
+              role="list"
+            >
+              <a
+                aria-current="page"
+                class="item"
+                href="/"
+                role="listitem"
+              >
+                Our Products
+              </a>
+            </div>
+          </div>
+          <div
+            class="seven wide column"
+          >
+            <h4
+              class="ui header"
+            >
+              Footer Header
+            </h4>
+            <p>
+              Extra space for a call to action inside the footer that could help re-engage users.
+            </p>
+            <div
+              class="ui horizontal list"
+              role="list"
+              style="display: flex;"
+            >
+              <div
+                class="item"
+                role="listitem"
+                style="display: flex;"
+              >
+                <i
+                  aria-hidden="true"
+                  class="twitter icon"
+                />
+                <div
+                  class="content"
+                >
+                  <a
+                    alt="twitter link"
+                    href="https://twitter.com/parmsang"
+                  >
+                    Twitter
+                  </a>
+                </div>
+              </div>
+              <div
+                class="item"
+                role="listitem"
+                style="display: flex;"
+              >
+                <i
+                  aria-hidden="true"
+                  class="facebook icon"
+                />
+                <div
+                  class="content"
+                >
+                  <a
+                    alt="facebook link"
+                    href="https://facebook.com/"
+                  >
+                    Facebook
+                  </a>
+                </div>
+              </div>
+              <div
+                class="item"
+                role="listitem"
+                style="display: flex;"
+              >
+                <i
+                  aria-hidden="true"
+                  class="mail icon"
+                />
+                <div
+                  class="content"
+                >
+                  <a
+                    alt="email link"
+                    href="mailto:john@doe.com"
+                  >
+                    Email
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
