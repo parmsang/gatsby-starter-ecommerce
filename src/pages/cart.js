@@ -65,6 +65,7 @@ const Cart = ({location}) => {
       } = await Moltin.checkoutCart(cartId, customer, address)
       await Moltin.payForOrder(id, token, email)
       setCompleted(true)
+      updateCartCount(0, cartId)
     } catch (e) {
       console.log(e)
     }
