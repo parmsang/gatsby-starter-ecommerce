@@ -51,10 +51,10 @@ const Cart = ({location}) => {
 
     const address = {
       first_name: name.split(' ')[0],
-      last_name: name.split(' ')[1],
+      last_name: name.split(' ')[1] || '',
       line_1,
       city,
-      county,
+      county: county || '',
       country,
       postcode,
     }
