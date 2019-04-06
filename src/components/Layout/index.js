@@ -1,9 +1,9 @@
 import React from 'react'
-import {Container} from 'semantic-ui-react'
 import Headroom from 'react-headroom'
-import 'semantic-ui-css/semantic.min.css'
-import Header from '../Header'
+import {Container} from 'semantic-ui-react'
 import Footer from '../Footer'
+import Header from '../Header'
+import 'semantic-ui-css/semantic.min.css'
 
 const Layout = ({location, children}) => (
   <>
