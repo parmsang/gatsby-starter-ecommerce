@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@moltin/gatsby-source-moltin": "^1.2.2",
-    "@moltin/sdk": "^3.18.2",
+    "@moltin/sdk": "^3.19.0",
     "babel-jest": "^24.3.1",
     "babel-preset-gatsby": "^0.1.8",
     "eslint-plugin-jest": "^22.3.0",
