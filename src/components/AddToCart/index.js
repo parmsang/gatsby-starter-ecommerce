@@ -42,8 +42,8 @@ const AddToCart = ({productId}) => {
           setVisible(true)
           toggleMessage()
         })
-        .catch(() => {
-          setError('Something went wrong')
+        .catch(err => {
+          setError(`Error: ${err.errors[0].detail}` || 'Something went wrong')
           setLoading(false)
         })
     }
