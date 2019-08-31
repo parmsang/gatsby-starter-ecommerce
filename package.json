@@ -76,7 +76,7 @@
   },
   "scripts": {
     "dev": "gatsby develop",
-    "lint": "eslint **/*.{js,jsx} --quiet",
+    "lint": "eslint '**/*.{js,jsx}' --quiet",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "develop": "rimraf .cache && gatsby develop",
     "build": "rimraf .cache && gatsby build",

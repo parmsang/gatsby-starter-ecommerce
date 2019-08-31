@@ -68,7 +68,6 @@ export const pageQuery = graphql`
           max_watt
           bulb_qty
           bulb
-          new
           sku
           finish
         }
