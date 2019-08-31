@@ -8,7 +8,7 @@ import AuthContext from '../components/Context/AuthContext'
 import {getOrders} from '../../lib/moltin'
 
 const MyAccount = ({location}) => {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [orders, setOrders] = useState([])
   const [included, setIncluded] = useState([])
   const [meta, setMeta] = useState({})
