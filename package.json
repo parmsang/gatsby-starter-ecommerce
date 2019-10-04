@@ -36,12 +36,13 @@
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^5.0.1",
+    "@testing-library/react": "^9.3.0",
     "babel-eslint": "^10.0.3",
     "babel-plugin-remove-graphql-queries": "^2.7.5",
     "babel-plugin-styled-components": "^1.10.6",
     "cross-env": "^5.2.0",
     "cypress": "^3.4.1",
-    "cypress-testing-library": "^4.0.0",
     "dotenv": "^8.1.0",
     "eslint": "^6.3.0",
     "eslint-config-airbnb": "^18.0.1",
@@ -59,7 +60,6 @@
     "jest": "^24.9.0",
     "lint-staged": "^9.2.5",
     "prettier": "^1.18.2",
-    "react-testing-library": "^8.0.1",
     "regenerator-runtime": "^0.13.3",
     "rimraf": "^3.0.0",
     "start-server-and-test": "^1.10.0"
