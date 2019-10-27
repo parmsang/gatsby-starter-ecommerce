@@ -21,7 +21,6 @@ const StoreIndex = ({location}) => {
             id
             name
             description
-            background_colour
             mainImageHref
             meta {
               display_price {

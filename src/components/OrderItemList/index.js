@@ -12,7 +12,7 @@ export default ({orders, loading}) => {
         <Message.Header>No recent orders</Message.Header>
         <p>
           When you place an order, they will appear here.
-          <Link to="/">Go shopping.</Link>
+          <Link to="/"> Go shopping.</Link>
         </p>
       </Message>
     )
