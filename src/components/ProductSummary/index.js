@@ -11,7 +11,7 @@ export default ({id, name, meta, sku, mainImage}) => (
       <Item.Image size="medium">
         <Img
           style={{width: '250px'}}
-          sizes={mainImage.childImageSharp.sizes}
+          fluid={mainImage.childImageSharp.sizes}
           alt={name}
         />
       </Item.Image>
