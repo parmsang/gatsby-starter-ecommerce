@@ -3,7 +3,6 @@ describe('add to cart', () => {
     cy.visit('/')
       .contains('Multi-Vibe')
       .click({force: true})
-      .waitForRouteChange()
       .findByText(/add to cart/i)
       .click({force: true})
       .findByText(/added to cart/i)
