@@ -80,17 +80,21 @@ const Cart = ({location}) => {
     })
   }
 
-  const rest = {completed, items, loading, cartId}
-
   return (
     <Layout location={location}>
       <SEO title="Cart" />
       <CartItemList
-        {...rest}
+        completed={completed}
+        items={items}
+        loading={loading}
+        cartId={cartId}
         removeFromCart={item => handleRemoveFromCart(item)}
       />
       {!loading && !completed && (
-        <CartSummary {...meta} handleCheckout={handleCheckout} />
+        <CartSummary
+          display_price={meta.display_price}
+          handleCheckout={handleCheckout}
+        />
       )}
     </Layout>
   )

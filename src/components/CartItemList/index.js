@@ -53,13 +53,17 @@ export default ({items, removeFromCart, loading, completed}) => {
           </Item.Header>
         ),
         image: (
-          <React.Fragment>
-            <Responsive as={MobileItemImage} {...Responsive.onlyMobile} />
+          <>
+            <Responsive
+              as={MobileItemImage}
+              minWidth={Responsive.onlyMobile.minWidth}
+              maxWidth={Responsive.onlyMobile.maxWidth}
+            />
             <Responsive
               as={DesktopItemImage}
               minWidth={Responsive.onlyTablet.minWidth}
             />
-          </React.Fragment>
+          </>
         ),
         meta: `${quantity}x ${price}`,
         description: 'Some more information goes here....',
