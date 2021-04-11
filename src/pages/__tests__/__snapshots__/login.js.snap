@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders 1`] = `
+exports[`<Layout /> renders 1`] = `
 <DocumentFragment>
   <div
     class="headroom-wrapper"
@@ -17,7 +17,6 @@ exports[`renders 1`] = `
             class="ui text container"
           >
             <a
-              aria-current="page"
               class="header item"
               href="/"
             >
@@ -177,7 +176,6 @@ exports[`renders 1`] = `
               role="list"
             >
               <a
-                aria-current="page"
                 class="item"
                 href="/"
                 role="listitem"
